@@ -18,9 +18,9 @@ const events = [
       'Join us for the auspicious Haldi ceremony where turmeric paste is applied to the bride and groom for blessings of prosperity and protection.',
     icon: '🌼',
     gradient: 'from-amber-500 via-yellow-400 to-amber-500',
-    bgGradient: 'from-amber-50/80 via-yellow-50/60 to-amber-50/80',
-    accentColor: 'text-amber-600',
-    borderColor: 'border-amber-300',
+    bgGradient: 'from-amber-100 via-yellow-50 to-amber-100',
+    accentColor: 'text-amber-700',
+    borderColor: 'border-amber-400',
   },
   {
     id: 'mehendi',
@@ -35,9 +35,9 @@ const events = [
       'An evening of intricate henna designs, music, and dance. Watch as beautiful mehendi adorns the bride\'s hands, symbolizing love and prosperity.',
     icon: '🌿',
     gradient: 'from-emerald-500 via-green-400 to-emerald-500',
-    bgGradient: 'from-emerald-50/80 via-green-50/60 to-emerald-50/80',
-    accentColor: 'text-emerald-600',
-    borderColor: 'border-emerald-300',
+    bgGradient: 'from-emerald-100 via-green-50 to-emerald-100',
+    accentColor: 'text-emerald-700',
+    borderColor: 'border-emerald-400',
   },
   {
     id: 'wedding',
@@ -52,10 +52,10 @@ const events = [
     description:
       'The sacred union ceremony featuring traditional Hindu Nepali rituals including the Saptapadi (seven sacred steps) and Sindoor ceremony.',
     icon: '💒',
-    gradient: 'from-maroon via-maroon-light to-maroon',
-    bgGradient: 'from-red-50/80 via-rose-50/60 to-red-50/80',
-    accentColor: 'text-maroon',
-    borderColor: 'border-maroon/30',
+    gradient: 'from-red-600 via-red-500 to-red-600',
+    bgGradient: 'from-red-100 via-rose-50 to-red-100',
+    accentColor: 'text-red-700',
+    borderColor: 'border-red-400',
   },
   {
     id: 'reception',
@@ -70,10 +70,10 @@ const events = [
     description:
       'An evening of celebration, fine dining, and dancing. Join us as we celebrate our union with family and friends.',
     icon: '🎉',
-    gradient: 'from-gold-dark via-gold to-gold-dark',
-    bgGradient: 'from-amber-50/80 via-orange-50/60 to-amber-50/80',
-    accentColor: 'text-gold-dark',
-    borderColor: 'border-gold/40',
+    gradient: 'from-amber-600 via-yellow-500 to-amber-600',
+    bgGradient: 'from-amber-100 via-orange-50 to-amber-100',
+    accentColor: 'text-amber-700',
+    borderColor: 'border-amber-400',
   },
 ]
 
@@ -130,7 +130,7 @@ export function EventsSection() {
           </p>
         </motion.div>
 
-        {/* Event Timeline Navigation */}
+        {/* Event Timeline Navigation - All text visible, gradient bg when selected */}
         <motion.div
           className="flex justify-center mb-10 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -138,11 +138,11 @@ export function EventsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="relative flex items-center gap-0">
+          <div className="relative flex items-center gap-1 sm:gap-2">
             {/* Connecting line */}
             <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gold/20 -translate-y-1/2 hidden sm:block" />
             
-            {events.map((event, index) => (
+            {events.map((event) => (
               <motion.button
                 key={event.id}
                 onClick={() => setActiveEvent(event.id)}
@@ -151,14 +151,14 @@ export function EventsSection() {
                 whileTap={{ scale: 0.95 }}
               >
                 <div className={`
-                  flex flex-col items-center px-3 sm:px-6 py-2 sm:py-3 rounded-xl transition-all duration-300
+                  flex flex-col items-center px-3 sm:px-5 py-2 sm:py-3 rounded-xl transition-all duration-300
                   ${activeEvent === event.id 
-                    ? `bg-gradient-to-br ${event.bgGradient} shadow-lg border ${event.borderColor}` 
-                    : 'hover:bg-ivory/50'}
+                    ? `bg-gradient-to-br ${event.bgGradient} shadow-lg border-2 ${event.borderColor}` 
+                    : 'bg-white/50 border border-gold/20 hover:bg-ivory/80'}
                 `}>
-                  <span className="text-xl sm:text-2xl mb-1">{event.icon}</span>
-                  <span className={`text-[10px] sm:text-xs font-medium transition-colors ${
-                    activeEvent === event.id ? event.accentColor : 'text-maroon/60'
+                  <span className="text-lg sm:text-2xl mb-1">{event.icon}</span>
+                  <span className={`text-[10px] sm:text-xs font-semibold transition-colors ${
+                    activeEvent === event.id ? event.accentColor : 'text-maroon/70'
                   }`}>
                     {event.name.split(' ')[0]}
                   </span>
@@ -175,8 +175,8 @@ export function EventsSection() {
           </div>
         </motion.div>
 
-        {/* Event Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-10 sm:mb-12">
+        {/* Event Cards Grid - Consistent sizing with all text visible */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-10 sm:mb-12">
           {events.map((event, index) => (
             <EventCard
               key={event.id}
@@ -283,69 +283,67 @@ function EventCard({ event, index, isActive, onClick }: EventCardProps) {
       onClick={onClick}
     >
       <motion.div
-        className={`relative h-full bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-300 border-2 ${
+        className={`relative h-full min-h-[320px] bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-300 border-2 ${
           isActive 
             ? `${event.borderColor} shadow-xl` 
             : 'border-transparent hover:shadow-lg hover:border-gold/20'
         }`}
         whileHover={{ y: -4 }}
       >
-        {/* Top gradient bar */}
-        <div className={`h-1.5 bg-gradient-to-r ${event.gradient}`} />
+        {/* Top gradient bar - thicker when selected */}
+        <div className={`h-1.5 ${isActive ? 'h-2' : 'h-1.5'} bg-gradient-to-r ${event.gradient} transition-all duration-300`} />
 
-        <div className="p-5 sm:p-6">
+        {/* Gradient background overlay when selected */}
+        {isActive && (
+          <div className={`absolute inset-0 bg-gradient-to-br ${event.bgGradient} opacity-40 pointer-events-none`} />
+        )}
+
+        <div className="relative p-5 sm:p-6">
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-start gap-3">
-              <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${event.bgGradient} flex items-center justify-center text-2xl sm:text-3xl border ${event.borderColor}`}>
+              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${isActive ? event.gradient : event.bgGradient} flex items-center justify-center text-2xl sm:text-3xl border ${event.borderColor} shadow-sm`}>
                 {event.icon}
               </div>
               <div>
-                <h3 className="font-semibold text-base sm:text-lg text-maroon">{event.name}</h3>
+                <h3 className={`font-semibold text-base sm:text-lg ${isActive ? event.accentColor : 'text-maroon'}`}>{event.name}</h3>
                 <p className={`font-[var(--font-devanagari)] text-sm ${event.accentColor}`}>{event.nepaliName}</p>
               </div>
             </div>
           </div>
 
-          {/* Event details grid */}
+          {/* Event details grid - always visible */}
           <div className="grid grid-cols-2 gap-3 mb-4">
-            <div className="flex items-center gap-2 text-sm text-maroon/70">
-              <div className="w-8 h-8 rounded-lg bg-cream flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center gap-2 text-sm text-maroon/80">
+              <div className={`w-8 h-8 rounded-lg ${isActive ? 'bg-white/80' : 'bg-cream'} flex items-center justify-center flex-shrink-0`}>
                 <Calendar className="w-4 h-4 text-gold" />
               </div>
-              <span>{event.date}</span>
+              <span className="font-medium">{event.date}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-maroon/70">
-              <div className="w-8 h-8 rounded-lg bg-cream flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center gap-2 text-sm text-maroon/80">
+              <div className={`w-8 h-8 rounded-lg ${isActive ? 'bg-white/80' : 'bg-cream'} flex items-center justify-center flex-shrink-0`}>
                 <Clock className="w-4 h-4 text-gold" />
               </div>
-              <span>{event.time}</span>
+              <span className="font-medium">{event.time}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-maroon/70 col-span-2">
-              <div className="w-8 h-8 rounded-lg bg-cream flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center gap-2 text-sm text-maroon/80 col-span-2">
+              <div className={`w-8 h-8 rounded-lg ${isActive ? 'bg-white/80' : 'bg-cream'} flex items-center justify-center flex-shrink-0`}>
                 <MapPin className="w-4 h-4 text-gold" />
               </div>
-              <span className="truncate">{event.venue}</span>
+              <span className="font-medium truncate">{event.venue}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-maroon/70 col-span-2">
-              <div className="w-8 h-8 rounded-lg bg-cream flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center gap-2 text-sm text-maroon/80 col-span-2">
+              <div className={`w-8 h-8 rounded-lg ${isActive ? 'bg-white/80' : 'bg-cream'} flex items-center justify-center flex-shrink-0`}>
                 <Shirt className="w-4 h-4 text-gold" />
               </div>
-              <span className="truncate">{event.dressCode}</span>
+              <span className="font-medium truncate">{event.dressCode}</span>
             </div>
           </div>
 
-          {/* Description - expandable on active */}
-          <motion.div
-            className="overflow-hidden"
-            initial={false}
-            animate={{ height: isActive ? 'auto' : 0, opacity: isActive ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <p className="text-maroon/60 text-sm leading-relaxed mb-4 pb-1">
-              {event.description}
-            </p>
-          </motion.div>
+          {/* Description - always visible */}
+          <p className={`text-sm leading-relaxed mb-4 ${isActive ? 'text-maroon/80' : 'text-maroon/60'}`}>
+            {event.description}
+          </p>
 
           {/* Action buttons */}
           <div className="flex gap-2 sm:gap-3">
@@ -372,7 +370,7 @@ function EventCard({ event, index, isActive, onClick }: EventCardProps) {
                   '_blank'
                 )
               }}
-              className={`flex items-center justify-center gap-1.5 px-4 py-2.5 border-2 ${event.borderColor} ${event.accentColor} rounded-xl text-xs sm:text-sm font-medium hover:bg-cream/50 transition-all cursor-pointer`}
+              className={`flex items-center justify-center gap-1.5 px-4 py-2.5 border-2 ${event.borderColor} ${event.accentColor} rounded-xl text-xs sm:text-sm font-medium ${isActive ? 'bg-white/80' : 'bg-white'} hover:bg-cream/50 transition-all cursor-pointer`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -381,16 +379,6 @@ function EventCard({ event, index, isActive, onClick }: EventCardProps) {
             </motion.button>
           </div>
         </div>
-
-        {/* Active indicator glow */}
-        {isActive && (
-          <motion.div
-            className={`absolute inset-0 bg-gradient-to-br ${event.bgGradient} opacity-30 pointer-events-none`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.15 }}
-            exit={{ opacity: 0 }}
-          />
-        )}
       </motion.div>
     </motion.div>
   )

@@ -2,125 +2,10 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface EnvelopeOpeningProps {
   onOpen: () => void
-}
-
-// Ganesh SVG Component - minimalist line art style
-function GaneshSVG({ className }: { className?: string }) {
-  return (
-    <svg 
-      viewBox="0 0 100 120" 
-      className={className}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Crown/Head decoration */}
-      <path 
-        d="M50 8 Q45 12 42 8 Q40 4 45 2 Q50 0 55 2 Q60 4 58 8 Q55 12 50 8" 
-        stroke="currentColor" 
-        strokeWidth="1.5" 
-        fill="currentColor"
-        opacity="0.3"
-      />
-      <circle cx="50" cy="5" r="2" fill="currentColor" />
-      
-      {/* Head outline */}
-      <path 
-        d="M35 25 Q30 30 28 40 Q26 50 30 58 Q32 62 38 65" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round"
-      />
-      <path 
-        d="M65 25 Q70 30 72 40 Q74 50 70 58 Q68 62 62 65" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round"
-      />
-      
-      {/* Ears */}
-      <path 
-        d="M28 35 Q18 32 15 42 Q12 52 20 55 Q25 56 28 50" 
-        stroke="currentColor" 
-        strokeWidth="1.5" 
-        strokeLinecap="round"
-      />
-      <path 
-        d="M72 35 Q82 32 85 42 Q88 52 80 55 Q75 56 72 50" 
-        stroke="currentColor" 
-        strokeWidth="1.5" 
-        strokeLinecap="round"
-      />
-      
-      {/* Eyes */}
-      <ellipse cx="40" cy="38" rx="4" ry="2.5" stroke="currentColor" strokeWidth="1.5" />
-      <ellipse cx="60" cy="38" rx="4" ry="2.5" stroke="currentColor" strokeWidth="1.5" />
-      <circle cx="40" cy="38" r="1" fill="currentColor" />
-      <circle cx="60" cy="38" r="1" fill="currentColor" />
-      
-      {/* Trunk */}
-      <path 
-        d="M50 45 Q48 50 45 58 Q42 66 38 75 Q35 82 40 88 Q45 92 50 88" 
-        stroke="currentColor" 
-        strokeWidth="2.5" 
-        strokeLinecap="round"
-        fill="none"
-      />
-      <path 
-        d="M50 45 Q52 50 50 55" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round"
-      />
-      
-      {/* Tusks */}
-      <path 
-        d="M42 60 Q38 62 35 58 Q33 55 36 54" 
-        stroke="currentColor" 
-        strokeWidth="1.5" 
-        fill="currentColor"
-        opacity="0.5"
-      />
-      <path 
-        d="M58 55 Q62 53 65 56 Q67 60 64 62" 
-        stroke="currentColor" 
-        strokeWidth="1.5" 
-        fill="currentColor"
-        opacity="0.5"
-      />
-      
-      {/* Forehead mark (tilak) */}
-      <path 
-        d="M50 28 L48 32 L50 30 L52 32 Z" 
-        fill="currentColor"
-      />
-      
-      {/* Body suggestion */}
-      <path 
-        d="M38 68 Q35 80 38 95 Q40 105 50 108 Q60 105 62 95 Q65 80 62 68" 
-        stroke="currentColor" 
-        strokeWidth="1.5" 
-        strokeLinecap="round"
-        opacity="0.6"
-      />
-      
-      {/* Decorative curves around */}
-      <path 
-        d="M25 20 Q20 25 22 35" 
-        stroke="currentColor" 
-        strokeWidth="1" 
-        opacity="0.4"
-      />
-      <path 
-        d="M75 20 Q80 25 78 35" 
-        stroke="currentColor" 
-        strokeWidth="1" 
-        opacity="0.4"
-      />
-    </svg>
-  )
 }
 
 // Decorative Diya (Oil Lamp) SVG
@@ -304,27 +189,13 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
 
           {/* Main scroll container with proper margins */}
           <motion.div
-            className="relative flex flex-col items-center w-full px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12 mx-4 sm:mx-6 md:mx-8"
+            className="relative flex flex-col items-center w-full max-w-[calc(100%-2rem)] sm:max-w-[calc(100%-3rem)] md:max-w-[calc(100%-4rem)] mx-4 sm:mx-6 md:mx-8 py-12 sm:py-14 md:py-16"
             initial={{ scale: 0.85, opacity: 0, y: 40 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
           >
-            {/* Ganesh SVG at top */}
-            <motion.div
-              className="mb-2 sm:mb-3 md:mb-4"
-              initial={{ opacity: 0, scale: 0.5, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              <div className="relative">
-                <GaneshSVG className="w-14 h-16 sm:w-20 sm:h-24 md:w-24 md:h-28 text-gold drop-shadow-lg" />
-                {/* Glow effect */}
-                <div className="absolute inset-0 blur-xl bg-gold/15 -z-10" />
-              </div>
-            </motion.div>
-
             {/* The Sacred Scroll/Patra */}
-            <div className="relative w-full max-w-[280px] sm:max-w-[360px] md:max-w-[440px] lg:max-w-[500px]">
+            <div className="relative w-full max-w-[300px] sm:max-w-[380px] md:max-w-[460px] lg:max-w-[520px]">
               {/* Top scroll curl */}
               <motion.div 
                 className="relative h-6 sm:h-8 md:h-10 mb-[-2px] z-10"
@@ -376,13 +247,23 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
 
                 {/* Content */}
                 <div className="relative px-4 sm:px-6 md:px-10 py-5 sm:py-6 md:py-8 text-center">
-                  {/* Swastik symbol */}
-                  <div className="flex justify-center mb-2 sm:mb-3">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-red-800" viewBox="0 0 40 40">
-                      <path d="M20 5 L20 35 M5 20 L35 20" stroke="currentColor" strokeWidth="3" />
-                      <path d="M20 5 L28 5 M20 35 L12 35 M5 20 L5 12 M35 20 L35 28" stroke="currentColor" strokeWidth="3" />
-                    </svg>
-                  </div>
+                  {/* Ganesh Image - INSIDE the envelope */}
+                  <motion.div
+                    className="flex justify-center mb-2 sm:mb-3"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                  >
+                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20">
+                      <Image
+                        src="/images/ganesh-line.png"
+                        alt="Lord Ganesha"
+                        fill
+                        className="object-contain"
+                        priority
+                      />
+                    </div>
+                  </motion.div>
 
                   {/* Sanskrit blessing - Shubh Vivah title with RED color */}
                   <h1 
@@ -471,7 +352,7 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
                 </svg>
               </motion.div>
 
-              {/* Wax seal */}
+              {/* Wax seal with S&A logo - couple in red */}
               <motion.div
                 className="absolute -bottom-2 sm:-bottom-3 left-1/2 -translate-x-1/2 z-20"
                 initial={{ scale: 1, rotate: 0 }}
@@ -483,16 +364,25 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 <div 
-                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center"
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center"
                   style={{
                     background: 'radial-gradient(circle at 30% 30%, #DC2626, #B91C1C 40%, #7F1D1D 80%, #450A0A)',
                     boxShadow: '0 4px 15px rgba(0,0,0,0.35), inset 0 1px 4px rgba(255,255,255,0.12)',
                   }}
                 >
                   <div className="absolute inset-1 rounded-full border border-gold/50" />
-                  <span className="font-[var(--font-heading)] text-gold text-xs sm:text-sm md:text-base font-bold">
-                    S&A
-                  </span>
+                  {/* Couple silhouette in red dress style */}
+                  <svg viewBox="0 0 40 40" className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10">
+                    {/* Bride silhouette */}
+                    <circle cx="14" cy="10" r="4" fill="#FFD700" />
+                    <path d="M14 14 L10 30 Q14 32 18 30 L14 14" fill="#FFD700" />
+                    <path d="M10 20 Q14 22 18 20" fill="none" stroke="#FFD700" strokeWidth="0.5" />
+                    {/* Groom silhouette */}
+                    <circle cx="26" cy="10" r="4" fill="#FFD700" />
+                    <path d="M26 14 L23 28 L26 30 L29 28 L26 14" fill="#FFD700" />
+                    {/* Heart between */}
+                    <path d="M20 18 C18 16, 16 18, 20 22 C24 18, 22 16, 20 18" fill="#DC2626" />
+                  </svg>
                 </div>
               </motion.div>
             </div>
@@ -544,9 +434,9 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
             </motion.button>
           </motion.div>
 
-          {/* Bottom blessing */}
+          {/* Bottom blessing - removed "Tap to reveal" text */}
           <motion.div
-            className="absolute bottom-8 sm:bottom-10 md:bottom-14 left-0 right-0 flex flex-col items-center gap-1 px-4"
+            className="absolute bottom-10 sm:bottom-12 md:bottom-16 left-0 right-0 flex flex-col items-center px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4 }}
@@ -558,9 +448,6 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
               </p>
               <div className="w-6 sm:w-8 md:w-12 h-px bg-gold/60" />
             </div>
-            <p className="text-ivory/80 text-[9px] sm:text-[10px] md:text-xs tracking-widest uppercase font-medium">
-              Tap to reveal your invitation
-            </p>
           </motion.div>
         </motion.div>
       )}
