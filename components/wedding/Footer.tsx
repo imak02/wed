@@ -21,7 +21,7 @@ export function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <WeddingLogo size="lg" variant="light" />
+          <WeddingLogo size="lg" />
         </motion.div>
 
         {/* Couple names */}

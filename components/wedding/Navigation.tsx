@@ -90,8 +90,7 @@ export function Navigation() {
             >
               <WeddingLogo 
                 size="sm" 
-                animated 
-                variant={isScrolled ? 'default' : 'light'}
+                animated
               />
               <div className="hidden sm:block">
                 <span className={`font-[var(--font-display)] text-3xl transition-colors ${
@@ -216,7 +215,7 @@ export function Navigation() {
 
               {/* Decorative element */}
               <div className="mt-6 pt-6 border-t border-gold/30 flex flex-col items-center">
-                <WeddingLogo size="md" variant="default" />
+                <WeddingLogo size="md" />
                 <p className="font-[var(--font-heading)] text-sm text-maroon/60 mt-3 tracking-wider">
                   23rd June 2026
                 </p>
