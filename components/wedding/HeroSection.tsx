@@ -161,18 +161,18 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <h1 className="font-[var(--font-great-vibes)] text-5xl sm:text-7xl lg:text-8xl text-ivory mb-2">
+          <h1 className="font-[var(--font-display)] text-6xl sm:text-8xl lg:text-9xl text-ivory mb-2">
             Smriti
           </h1>
-          <p className="text-gold text-2xl sm:text-3xl mb-2">&</p>
-          <h1 className="font-[var(--font-great-vibes)] text-5xl sm:text-7xl lg:text-8xl text-ivory">
+          <p className="text-gold text-2xl sm:text-3xl mb-2 font-serif">&</p>
+          <h1 className="font-[var(--font-display)] text-6xl sm:text-8xl lg:text-9xl text-ivory">
             Asbin
           </h1>
         </motion.div>
 
         {/* Tagline */}
         <motion.p
-          className="text-ivory/80 text-lg sm:text-xl mt-6 mb-8 font-light tracking-wide"
+          className="font-[var(--font-heading)] text-ivory/80 text-lg sm:text-xl mt-6 mb-8 tracking-[0.2em] uppercase"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
@@ -188,7 +188,7 @@ export function HeroSection() {
           transition={{ delay: 0.7 }}
         >
           <Calendar className="w-5 h-5" />
-          <span className="text-lg sm:text-xl tracking-wide">June 23, 2026</span>
+          <span className="font-[var(--font-heading)] text-lg sm:text-xl tracking-wider">June 23, 2026</span>
         </motion.div>
 
         {/* Countdown timer */}
@@ -218,7 +218,7 @@ export function HeroSection() {
               >
                 {String(item.value).padStart(2, '0')}
               </motion.span>
-              <span className="text-xs sm:text-sm text-gold/80 uppercase tracking-wider">
+              <span className="font-[var(--font-heading)] text-[10px] sm:text-xs text-gold/80 uppercase tracking-wider">
                 {item.label}
               </span>
             </motion.div>
@@ -234,24 +234,24 @@ export function HeroSection() {
         >
           <motion.button
             onClick={() => handleNavClick('#events')}
-            className="group relative px-8 py-3.5 bg-gradient-to-r from-gold-dark via-gold to-gold-dark text-maroon font-semibold rounded-full shadow-lg overflow-hidden cursor-pointer"
+            className="group relative px-8 py-3.5 bg-gradient-to-r from-gold-dark via-gold to-gold-dark text-maroon font-[var(--font-heading)] font-semibold tracking-wider uppercase rounded-full shadow-lg overflow-hidden cursor-pointer"
             whileHover={{ scale: 1.05, boxShadow: '0 20px 40px -10px rgba(201,162,39,0.4)' }}
             whileTap={{ scale: 0.95 }}
           >
             {/* Shimmer effect */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            <span className="relative flex items-center gap-2">
+            <span className="relative flex items-center gap-2 text-sm">
               <Calendar className="w-5 h-5" />
               View Events
             </span>
           </motion.button>
           <motion.button
             onClick={() => handleNavClick('#rsvp')}
-            className="group px-8 py-3.5 bg-transparent border-2 border-gold text-gold font-semibold rounded-full hover:bg-gold/10 transition-colors cursor-pointer"
+            className="group px-8 py-3.5 bg-transparent border-2 border-gold text-gold font-[var(--font-heading)] font-semibold tracking-wider uppercase rounded-full hover:bg-gold/10 transition-colors cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 text-sm">
               <MapPin className="w-5 h-5" />
               RSVP Now
             </span>

@@ -7,52 +7,6 @@ interface EnvelopeOpeningProps {
   onOpen: () => void
 }
 
-// Om SVG component
-function OmSymbol({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 100" className={className} fill="currentColor">
-      <path d="M50 5C25.1 5 5 25.1 5 50s20.1 45 45 45 45-20.1 45-45S74.9 5 50 5zm0 85c-22.1 0-40-17.9-40-40S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40z" fillOpacity="0.1"/>
-      <text x="50" y="68" textAnchor="middle" className="font-[var(--font-devanagari)]" fontSize="50" fontWeight="bold">ॐ</text>
-    </svg>
-  )
-}
-
-// Swastika SVG for religious symbolism
-function SwastikSymbol({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 40" className={className} fill="currentColor">
-      <path d="M17 3h6v14h14v6H23v14h-6V23H3v-6h14V3z" fillOpacity="0.8"/>
-      <path d="M23 3h8v8h-8V3zM3 17h8v8H3v-8zM29 23h8v8h-8v-8zM9 29h8v8H9v-8z" fillOpacity="0.8"/>
-    </svg>
-  )
-}
-
-// Kalash (sacred pot) SVG
-function KalashSymbol({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 60 80" className={className} fill="currentColor">
-      <ellipse cx="30" cy="70" rx="25" ry="8" fillOpacity="0.6"/>
-      <path d="M10 65c0-20 5-35 20-40s20 20 20 40" fill="none" stroke="currentColor" strokeWidth="2"/>
-      <ellipse cx="30" cy="25" rx="15" ry="5" fillOpacity="0.8"/>
-      <path d="M20 25c-5-15 5-22 10-22s15 7 10 22" fill="currentColor"/>
-      <ellipse cx="30" cy="8" rx="5" ry="3"/>
-    </svg>
-  )
-}
-
-// Diya (oil lamp) SVG
-function DiyaSymbol({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 50 50" className={className}>
-      <path d="M10 40c0 5 8 8 15 8s15-3 15-8c0-3-5-5-15-5s-15 2-15 5z" fill="currentColor" fillOpacity="0.8"/>
-      <ellipse cx="25" cy="35" rx="12" ry="5" fill="currentColor"/>
-      <path d="M22 35c0-8 3-12 3-12s3 4 3 12" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M25 18c-2 0-3-3-3-6s2-7 3-7 3 4 3 7-1 6-3 6z" fill="#FFD700" className="animate-pulse"/>
-      <ellipse cx="25" cy="14" rx="2" ry="3" fill="#FFA500" className="animate-pulse"/>
-    </svg>
-  )
-}
-
 export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
   const [isOpening, setIsOpening] = useState(false)
   const [isOpened, setIsOpened] = useState(false)
@@ -61,8 +15,8 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
     setIsOpening(true)
     setTimeout(() => {
       setIsOpened(true)
-      setTimeout(onOpen, 800)
-    }, 2000)
+      setTimeout(onOpen, 600)
+    }, 1800)
   }
 
   return (
@@ -71,78 +25,53 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
         <motion.div
           className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden px-4"
           style={{
-            background: 'radial-gradient(ellipse at center, #8B1A1A 0%, #5C1010 50%, #3A0A0A 100%)',
+            background: 'linear-gradient(145deg, #C41E3A 0%, #8B0000 30%, #5C0000 70%, #3D0000 100%)',
           }}
-          exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          {/* Animated mandala background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.08]"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 120, repeat: Infinity, ease: 'linear' }}
-            >
-              <svg viewBox="0 0 400 400" className="w-full h-full text-gold">
-                {[...Array(36)].map((_, i) => (
-                  <g key={i} transform={`rotate(${i * 10} 200 200)`}>
-                    <path d="M200 20 Q220 100 200 180 Q180 100 200 20" fill="none" stroke="currentColor" strokeWidth="1"/>
-                    <circle cx="200" cy="30" r="5" fill="currentColor"/>
-                  </g>
-                ))}
-                <circle cx="200" cy="200" r="150" fill="none" stroke="currentColor" strokeWidth="1"/>
-                <circle cx="200" cy="200" r="100" fill="none" stroke="currentColor" strokeWidth="1"/>
-                <circle cx="200" cy="200" r="50" fill="none" stroke="currentColor" strokeWidth="1"/>
-              </svg>
-            </motion.div>
-          </div>
+          {/* Background pattern - subtle paisley */}
+          <div 
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFD700' fill-opacity='1'%3E%3Cpath d='M40 10c-8 0-15 10-15 25s7 25 15 25 15-10 15-25-7-25-15-25zm0 5c5 0 10 8 10 20s-5 20-10 20-10-8-10-20 5-20 10-20z'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '80px 80px',
+            }}
+          />
 
-          {/* Floating sacred symbols */}
+          {/* Floating gold particles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(12)].map((_, i) => (
+            {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute text-gold/20"
+                className="absolute w-1 h-1 bg-gold rounded-full"
                 style={{
                   left: `${Math.random() * 100}%`,
-                  top: `-10%`,
+                  top: `${Math.random() * 100}%`,
                 }}
                 animate={{
-                  y: ['0vh', '120vh'],
-                  x: [0, Math.random() * 80 - 40],
-                  rotate: [0, 360],
-                  opacity: [0.3, 0.5, 0.3],
+                  y: [0, -30, 0],
+                  opacity: [0.2, 0.8, 0.2],
+                  scale: [1, 1.5, 1],
                 }}
                 transition={{
-                  duration: 15 + Math.random() * 10,
+                  duration: 3 + Math.random() * 2,
                   repeat: Infinity,
-                  delay: Math.random() * 8,
-                  ease: 'linear',
+                  delay: Math.random() * 3,
+                  ease: 'easeInOut',
                 }}
-              >
-                {i % 4 === 0 ? (
-                  <SwastikSymbol className="w-6 h-6" />
-                ) : i % 4 === 1 ? (
-                  <div className="w-3 h-3 bg-gold/40 rounded-full" />
-                ) : i % 4 === 2 ? (
-                  <svg viewBox="0 0 24 24" className="w-4 h-4">
-                    <path fill="currentColor" d="M12 2L14 8L20 8L15 12L17 18L12 14L7 18L9 12L4 8L10 8L12 2Z"/>
-                  </svg>
-                ) : (
-                  <DiyaSymbol className="w-5 h-5 text-gold/30" />
-                )}
-              </motion.div>
+              />
             ))}
           </div>
 
-          {/* Ambient sacred glow */}
+          {/* Ambient glow */}
           <motion.div
-            className="absolute w-[600px] h-[600px] rounded-full"
+            className="absolute w-[500px] h-[500px] rounded-full"
             style={{
-              background: 'radial-gradient(circle, rgba(201,162,39,0.2) 0%, transparent 60%)',
+              background: 'radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 60%)',
             }}
             animate={{
-              scale: [1, 1.2, 1],
+              scale: [1, 1.15, 1],
               opacity: [0.3, 0.5, 0.3],
             }}
             transition={{
@@ -152,205 +81,206 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
             }}
           />
 
-          {/* Main content container */}
+          {/* Main envelope container */}
           <motion.div
             className="relative flex flex-col items-center"
-            initial={{ scale: 0.8, opacity: 0, y: 20 }}
+            initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            {/* Om Symbol at top */}
+            {/* Om Symbol */}
             <motion.div
-              className="mb-6 text-gold"
-              initial={{ opacity: 0, scale: 0 }}
+              className="mb-6"
+              initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <span className="font-[var(--font-devanagari)] text-5xl sm:text-6xl">ॐ</span>
+              <span className="font-[var(--font-devanagari)] text-5xl sm:text-6xl text-gold drop-shadow-lg">
+                ॐ
+              </span>
             </motion.div>
 
-            {/* Traditional Scroll/Patra Envelope */}
-            <div className="relative w-72 h-96 sm:w-80 sm:h-[420px] md:w-[360px] md:h-[480px]">
-              {/* Main scroll body */}
-              <motion.div
-                className="absolute inset-0 rounded-t-[100px] rounded-b-lg overflow-hidden"
+            {/* The Envelope */}
+            <div className="relative w-80 h-56 sm:w-96 sm:h-64 md:w-[420px] md:h-72" style={{ perspective: '1000px' }}>
+              
+              {/* Envelope back */}
+              <div 
+                className="absolute inset-0 rounded-lg shadow-2xl"
                 style={{
-                  background: 'linear-gradient(180deg, #FFF8E7 0%, #F5E6C8 30%, #E8D5A8 100%)',
-                  boxShadow: '0 25px 60px -12px rgba(50, 10, 10, 0.6), 0 0 80px rgba(201, 162, 39, 0.15)',
+                  background: 'linear-gradient(135deg, #F5E6C8 0%, #E8D5A8 50%, #D4C494 100%)',
+                  boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.3)',
                 }}
               >
-                {/* Decorative border pattern */}
-                <div className="absolute inset-3 sm:inset-4 border-2 border-maroon/30 rounded-t-[85px] rounded-b-md">
-                  <div className="absolute inset-2 border border-gold/40 rounded-t-[80px] rounded-b-sm" />
+                {/* Decorative border */}
+                <div className="absolute inset-3 sm:inset-4 border-2 border-maroon/20 rounded-md">
+                  <div className="absolute inset-1 border border-gold/30 rounded-sm" />
                 </div>
 
-                {/* Top decorative paisley corners */}
-                <div className="absolute top-8 left-6 w-8 h-8 text-maroon/40">
-                  <svg viewBox="0 0 40 40" fill="currentColor">
-                    <path d="M5 35C5 15 15 5 35 5C30 10 25 20 25 35C20 30 10 30 5 35Z"/>
-                  </svg>
-                </div>
-                <div className="absolute top-8 right-6 w-8 h-8 text-maroon/40 scale-x-[-1]">
-                  <svg viewBox="0 0 40 40" fill="currentColor">
-                    <path d="M5 35C5 15 15 5 35 5C30 10 25 20 25 35C20 30 10 30 5 35Z"/>
-                  </svg>
-                </div>
+                {/* Corner decorations */}
+                <svg className="absolute top-4 left-4 w-8 h-8 sm:w-10 sm:h-10 text-maroon/30" viewBox="0 0 40 40">
+                  <path d="M5 35 Q5 5 35 5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                  <circle cx="8" cy="8" r="3" fill="currentColor"/>
+                </svg>
+                <svg className="absolute top-4 right-4 w-8 h-8 sm:w-10 sm:h-10 text-maroon/30 scale-x-[-1]" viewBox="0 0 40 40">
+                  <path d="M5 35 Q5 5 35 5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                  <circle cx="8" cy="8" r="3" fill="currentColor"/>
+                </svg>
+                <svg className="absolute bottom-4 left-4 w-8 h-8 sm:w-10 sm:h-10 text-maroon/30 scale-y-[-1]" viewBox="0 0 40 40">
+                  <path d="M5 35 Q5 5 35 5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                  <circle cx="8" cy="8" r="3" fill="currentColor"/>
+                </svg>
+                <svg className="absolute bottom-4 right-4 w-8 h-8 sm:w-10 sm:h-10 text-maroon/30 scale-[-1]" viewBox="0 0 40 40">
+                  <path d="M5 35 Q5 5 35 5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                  <circle cx="8" cy="8" r="3" fill="currentColor"/>
+                </svg>
 
-                {/* Invitation content inside */}
-                <motion.div
-                  className="absolute inset-8 sm:inset-10 flex flex-col items-center justify-center text-center"
-                  initial={{ y: 0, opacity: 1 }}
-                  animate={isOpening ? { y: -60, opacity: 0 } : { y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                  {/* Kalash symbol */}
-                  <KalashSymbol className="w-10 h-14 sm:w-12 sm:h-16 text-maroon/60 mb-2" />
-                  
-                  {/* Sanskrit text */}
-                  <p className="font-[var(--font-devanagari)] text-maroon/70 text-sm sm:text-base mb-1">
+                {/* Inner content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
+                  <p className="font-[var(--font-devanagari)] text-maroon/60 text-sm sm:text-base mb-1">
                     शुभ विवाह
                   </p>
-                  
-                  <p className="text-gold text-[10px] sm:text-xs tracking-[0.2em] uppercase mb-3">
+                  <p className="font-[var(--font-heading)] text-maroon/40 text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-4">
                     Wedding Invitation
                   </p>
-
-                  {/* Decorative divider */}
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-                    <SwastikSymbol className="w-4 h-4 text-saffron/60" />
-                    <div className="w-8 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+                    <div className="w-8 h-px bg-gold/50" />
+                    <div className="w-2 h-2 bg-gold/50 rounded-full" />
+                    <div className="w-8 h-px bg-gold/50" />
                   </div>
-
-                  {/* Couple names */}
-                  <h2 className="font-[var(--font-great-vibes)] text-2xl sm:text-3xl md:text-4xl text-maroon leading-tight">
+                  <h2 className="font-[var(--font-display)] text-4xl sm:text-5xl text-maroon leading-tight">
                     Smriti
                   </h2>
-                  <p className="text-gold text-lg my-0.5">&</p>
-                  <h2 className="font-[var(--font-great-vibes)] text-2xl sm:text-3xl md:text-4xl text-maroon leading-tight">
+                  <p className="text-gold text-xl sm:text-2xl my-1">&</p>
+                  <h2 className="font-[var(--font-display)] text-4xl sm:text-5xl text-maroon leading-tight">
                     Asbin
                   </h2>
-
-                  <p className="text-maroon/50 text-xs sm:text-sm mt-3">
+                  <p className="font-[var(--font-heading)] text-maroon/50 text-xs sm:text-sm mt-4 tracking-wider">
                     23rd June 2026
                   </p>
-
-                  {/* Diya at bottom */}
-                  <div className="mt-4 flex items-center gap-4">
-                    <DiyaSymbol className="w-6 h-6 text-saffron" />
-                    <motion.div
-                      className="w-2 h-2 rounded-full bg-saffron"
-                      animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <DiyaSymbol className="w-6 h-6 text-saffron scale-x-[-1]" />
-                  </div>
-                </motion.div>
-
-                {/* Bottom decorative elements */}
-                <div className="absolute bottom-4 left-6 w-6 h-6 text-maroon/30 rotate-180">
-                  <svg viewBox="0 0 40 40" fill="currentColor">
-                    <path d="M5 35C5 15 15 5 35 5C30 10 25 20 25 35C20 30 10 30 5 35Z"/>
-                  </svg>
                 </div>
-                <div className="absolute bottom-4 right-6 w-6 h-6 text-maroon/30 rotate-180 scale-x-[-1]">
-                  <svg viewBox="0 0 40 40" fill="currentColor">
-                    <path d="M5 35C5 15 15 5 35 5C30 10 25 20 25 35C20 30 10 30 5 35Z"/>
-                  </svg>
-                </div>
-              </motion.div>
+              </div>
 
-              {/* Scroll top roll with seal */}
+              {/* Envelope flap (top triangle) */}
               <motion.div
-                className="absolute -top-2 left-0 right-0 h-20 sm:h-24 origin-bottom"
+                className="absolute top-0 left-0 right-0 h-[55%] origin-top"
                 style={{ transformStyle: 'preserve-3d' }}
                 initial={{ rotateX: 0 }}
-                animate={isOpening ? { rotateX: -180, y: -20 } : { rotateX: 0, y: 0 }}
-                transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                animate={isOpening ? { rotateX: -180 } : { rotateX: 0 }}
+                transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
               >
-                {/* Front of scroll roll */}
-                <div
-                  className="absolute inset-0 rounded-t-[100px]"
-                  style={{
-                    background: 'linear-gradient(180deg, #E8D5A8 0%, #F5E6C8 50%, #FFF8E7 100%)',
+                {/* Front of flap */}
+                <div 
+                  className="absolute inset-0"
+                  style={{ 
+                    clipPath: 'polygon(0 0, 50% 100%, 100% 0)',
+                    background: 'linear-gradient(180deg, #E8D5A8 0%, #D4C494 100%)',
                     backfaceVisibility: 'hidden',
-                    boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
                   }}
                 >
-                  {/* Decorative roll edge */}
-                  <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-b from-transparent to-maroon/10 rounded-b-lg" />
-                  
-                  {/* Central wax seal */}
-                  <motion.div
-                    className="absolute bottom-2 left-1/2 -translate-x-1/2 w-14 h-14 sm:w-16 sm:h-16"
-                    animate={isOpening ? { scale: [1, 1.3, 0], rotate: [0, 20, 40] } : { scale: 1 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <div className="w-full h-full rounded-full bg-gradient-to-br from-maroon via-maroon-light to-maroon shadow-xl flex items-center justify-center relative overflow-hidden">
-                      {/* Wax texture */}
-                      <div className="absolute inset-0 opacity-30">
-                        {[...Array(8)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="absolute top-1/2 left-1/2 w-full h-0.5 bg-ivory/20 origin-left"
-                            style={{ transform: `rotate(${i * 22.5}deg)` }}
-                          />
-                        ))}
-                      </div>
-                      {/* Inner seal design */}
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gold/50 flex items-center justify-center bg-maroon/60 backdrop-blur-sm">
-                        <span className="font-[var(--font-devanagari)] text-gold text-lg sm:text-xl">ॐ</span>
-                      </div>
-                    </div>
-                    {/* Wax drips */}
-                    <div className="absolute -bottom-1 left-1/4 w-2 h-3 bg-maroon rounded-b-full" />
-                    <div className="absolute -bottom-1.5 right-1/3 w-1.5 h-2 bg-maroon rounded-b-full" />
-                  </motion.div>
+                  {/* Flap border design */}
+                  <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="flapBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#C9A227" stopOpacity="0.5" />
+                        <stop offset="50%" stopColor="#8B1A1A" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="#C9A227" stopOpacity="0.5" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M 10,5 L 50%,calc(100% - 15) L calc(100% - 10),5" fill="none" stroke="url(#flapBorder)" strokeWidth="2" />
+                  </svg>
                 </div>
 
-                {/* Back of scroll roll */}
-                <div
-                  className="absolute inset-0 rounded-t-[100px]"
-                  style={{
-                    background: 'linear-gradient(0deg, #E8D5A8 0%, #F5E6C8 100%)',
+                {/* Back of flap */}
+                <div 
+                  className="absolute inset-0"
+                  style={{ 
+                    clipPath: 'polygon(0 0, 50% 100%, 100% 0)',
+                    background: 'linear-gradient(180deg, #D4C494 0%, #C4B484 100%)',
                     transform: 'rotateX(180deg)',
                     backfaceVisibility: 'hidden',
                   }}
                 />
               </motion.div>
+
+              {/* Wax Seal - centered on the flap point */}
+              <motion.div
+                className="absolute left-1/2 -translate-x-1/2 z-10"
+                style={{ top: 'calc(55% - 28px)' }}
+                initial={{ scale: 1 }}
+                animate={isOpening ? { scale: 0, opacity: 0, rotate: 180 } : { scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+              >
+                <div 
+                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center relative"
+                  style={{
+                    background: 'radial-gradient(circle at 30% 30%, #A52A2A, #8B0000 50%, #5C0000)',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.2)',
+                  }}
+                >
+                  {/* Seal texture */}
+                  <div className="absolute inset-1 rounded-full border border-ivory/20" />
+                  {/* SA monogram */}
+                  <span className="font-[var(--font-heading)] text-gold text-lg sm:text-xl font-bold tracking-tight">
+                    S&A
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Bottom flaps (left and right triangles) */}
+              <div 
+                className="absolute bottom-0 left-0 w-1/2 h-[45%]"
+                style={{ 
+                  clipPath: 'polygon(0 100%, 100% 0, 100% 100%)',
+                  background: 'linear-gradient(135deg, #E8D5A8 0%, #D4C494 100%)',
+                }}
+              />
+              <div 
+                className="absolute bottom-0 right-0 w-1/2 h-[45%]"
+                style={{ 
+                  clipPath: 'polygon(0 0, 100% 100%, 0 100%)',
+                  background: 'linear-gradient(-135deg, #E8D5A8 0%, #D4C494 100%)',
+                }}
+              />
             </div>
 
             {/* Open button */}
             <motion.button
               onClick={handleOpen}
               disabled={isOpening}
-              className="mt-8 sm:mt-10 group cursor-pointer"
+              className="mt-8 sm:mt-10 group cursor-pointer disabled:cursor-not-allowed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="relative px-8 py-3 sm:px-10 sm:py-3.5 bg-gradient-to-r from-gold-dark via-gold to-gold-dark text-maroon font-semibold rounded-full shadow-xl overflow-hidden disabled:opacity-50 text-sm sm:text-base">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <div 
+                className="relative px-10 py-3.5 sm:px-12 sm:py-4 rounded-full overflow-hidden shadow-xl"
+                style={{
+                  background: 'linear-gradient(135deg, #C9A227 0%, #E5D080 50%, #C9A227 100%)',
+                }}
+              >
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 
-                <span className="relative flex items-center gap-2">
+                <span className="relative font-[var(--font-heading)] text-maroon font-semibold text-sm sm:text-base tracking-wide flex items-center gap-2">
                   {isOpening ? (
                     <>
                       <motion.span
                         animate={{ rotate: 360 }}
                         transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                       >
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
                       </motion.span>
-                      <span className="font-[var(--font-devanagari)]">खोल्दै...</span>
+                      Opening...
                     </>
                   ) : (
                     <>
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76" />
                       </svg>
                       Open Invitation
                     </>
@@ -360,23 +290,23 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
             </motion.button>
           </motion.div>
 
-          {/* Bottom Sanskrit blessing */}
+          {/* Bottom blessing text */}
           <motion.div
-            className="absolute bottom-6 sm:bottom-10 flex flex-col items-center gap-2"
+            className="absolute bottom-6 sm:bottom-10 flex flex-col items-center gap-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.8 }}
+            transition={{ delay: 1.2 }}
           >
-            <div className="flex items-center gap-3">
-              <DiyaSymbol className="w-5 h-5 text-saffron/50" />
-              <div className="w-6 sm:w-10 h-px bg-gold/30" />
-              <p className="font-[var(--font-devanagari)] text-gold/80 text-sm sm:text-base tracking-wide">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-8 sm:w-12 h-px bg-gold/40" />
+              <p className="font-[var(--font-devanagari)] text-gold/90 text-base sm:text-lg">
                 शुभ विवाह
               </p>
-              <div className="w-6 sm:w-10 h-px bg-gold/30" />
-              <DiyaSymbol className="w-5 h-5 text-saffron/50 scale-x-[-1]" />
+              <div className="w-8 sm:w-12 h-px bg-gold/40" />
             </div>
-            <p className="text-ivory/40 text-xs">Tap to reveal your invitation</p>
+            <p className="text-ivory/50 text-xs tracking-wider">
+              Tap to reveal your invitation
+            </p>
           </motion.div>
         </motion.div>
       )}

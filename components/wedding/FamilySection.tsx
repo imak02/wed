@@ -49,7 +49,7 @@ export function FamilySection() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4">The Families</p>
-          <h2 className="font-[var(--font-great-vibes)] text-4xl sm:text-6xl text-maroon mb-4">
+          <h2 className="font-[var(--font-display)] text-4xl sm:text-6xl text-maroon mb-4">
             Our Beloved Families
           </h2>
           <div className="flex items-center justify-center gap-4">
@@ -73,7 +73,7 @@ export function FamilySection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="font-[var(--font-great-vibes)] text-3xl sm:text-4xl text-maroon mb-2">
+          <h3 className="font-[var(--font-display)] text-3xl sm:text-4xl text-maroon mb-2">
             Wedding Party
           </h3>
           <p className="text-maroon/60">Our dearest friends who stand with us</p>
@@ -109,7 +109,7 @@ function FamilyCard({ family, side }: FamilyCardProps) {
       <div className="bg-cream rounded-2xl p-6 sm:p-8 shadow-lg border border-gold/10">
         {/* Header */}
         <div className="text-center mb-8">
-          <h3 className="font-[var(--font-great-vibes)] text-2xl sm:text-3xl text-maroon">
+          <h3 className="font-[var(--font-display)] text-2xl sm:text-3xl text-maroon">
             {family.title}
           </h3>
           <p className="text-gold text-lg">{family.nepaliTitle}</p>

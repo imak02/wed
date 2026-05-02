@@ -70,8 +70,8 @@ export function RSVPSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4">Be Our Guest</p>
-          <h2 className="font-[var(--font-great-vibes)] text-4xl sm:text-6xl text-maroon mb-4">
+          <p className="font-[var(--font-heading)] text-gold text-sm tracking-[0.3em] uppercase mb-4">Be Our Guest</p>
+          <h2 className="font-[var(--font-display)] text-5xl sm:text-7xl text-maroon mb-4">
             RSVP
           </h2>
           <p className="text-maroon/60 max-w-lg mx-auto">
@@ -303,7 +303,7 @@ function SuccessState() {
       </motion.div>
 
       <motion.h3
-        className="font-[var(--font-great-vibes)] text-3xl sm:text-4xl text-maroon mb-3"
+        className="font-[var(--font-display)] text-3xl sm:text-4xl text-maroon mb-3"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}

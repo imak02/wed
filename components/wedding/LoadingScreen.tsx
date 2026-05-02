@@ -136,10 +136,10 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h1 className="font-[var(--font-great-vibes)] text-3xl sm:text-4xl md:text-5xl text-ivory mb-2">
+            <h1 className="font-[var(--font-display)] text-4xl sm:text-5xl md:text-6xl text-ivory mb-2">
               Smriti & Asbin
             </h1>
-            <p className="text-gold/80 tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-xs">
+            <p className="font-[var(--font-heading)] text-gold/80 tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-xs">
               Wedding Invitation
             </p>
           </motion.div>

@@ -118,8 +118,8 @@ export function EventsSection() {
             <Sparkles className="w-5 h-5 text-gold" />
             <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold" />
           </motion.div>
-          <p className="text-gold text-xs sm:text-sm tracking-[0.3em] uppercase mb-3">Save The Dates</p>
-          <h2 className="font-[var(--font-great-vibes)] text-4xl sm:text-5xl md:text-6xl text-maroon mb-4">
+          <p className="font-[var(--font-heading)] text-gold text-xs sm:text-sm tracking-[0.3em] uppercase mb-3">Save The Dates</p>
+          <h2 className="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl text-maroon mb-4">
             Wedding Events
           </h2>
           <p className="font-[var(--font-devanagari)] text-maroon/50 text-base sm:text-lg mb-2">

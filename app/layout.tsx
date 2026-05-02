@@ -1,18 +1,24 @@
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Great_Vibes, Tiro_Devanagari_Hindi } from 'next/font/google'
+import { Playfair_Display, Tangerine, Tiro_Devanagari_Hindi, Cinzel } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-cormorant',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-playfair',
 })
 
-const greatVibes = Great_Vibes({
+const tangerine = Tangerine({
   subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-great-vibes',
+  weight: ['400', '700'],
+  variable: '--font-tangerine',
+})
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-cinzel',
 })
 
 const tiroDevanagari = Tiro_Devanagari_Hindi({
@@ -45,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${greatVibes.variable} ${tiroDevanagari.variable} bg-background`}>
+    <html lang="en" className={`${playfair.variable} ${tangerine.variable} ${cinzel.variable} ${tiroDevanagari.variable} bg-background`}>
       <body className="font-serif antialiased overflow-x-hidden">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
