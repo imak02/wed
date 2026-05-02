@@ -247,19 +247,19 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
 
                 {/* Content */}
                 <div className="relative px-4 sm:px-6 md:px-10 py-5 sm:py-6 md:py-8 text-center">
-                  {/* Ganesh Image - INSIDE the envelope */}
+                  {/* Ganesh Image - INSIDE the envelope with transparent background */}
                   <motion.div
                     className="flex justify-center mb-2 sm:mb-3"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
                   >
-                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20">
+                    <div className="relative w-14 h-14 sm:w-18 sm:h-18 md:w-24 md:h-24 rounded-full overflow-hidden bg-transparent">
                       <Image
-                        src="/images/ganesh-line.png"
+                        src="/images/ganesh-transparent.jpg"
                         alt="Lord Ganesha"
                         fill
-                        className="object-contain"
+                        className="object-contain mix-blend-multiply"
                         priority
                       />
                     </div>
