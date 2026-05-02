@@ -57,7 +57,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 pb-32"
     >
       {/* Background image with overlay */}
       <div className="absolute inset-0">
@@ -132,10 +132,10 @@ export function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto flex-1 flex flex-col justify-center">
         {/* Sanskrit blessing */}
         <motion.p
-          className="text-gold text-sm sm:text-base tracking-[0.3em] uppercase mb-4"
+          className="font-[var(--font-devanagari)] text-gold text-base sm:text-lg tracking-wider mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -227,7 +227,7 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
@@ -257,26 +257,26 @@ export function HeroSection() {
             </span>
           </motion.button>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{
-            opacity: { delay: 1.5 },
-            y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
-          }}
-        >
-          <div className="w-6 h-10 border-2 border-gold/50 rounded-full flex justify-center pt-2 cursor-pointer" onClick={() => handleNavClick('#story')}>
-            <motion.div
-              className="w-1.5 h-1.5 bg-gold rounded-full"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </div>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator - positioned at the bottom of the section */}
+      <motion.div
+        className="relative z-10 pb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          opacity: { delay: 1.5 },
+          y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
+        }}
+      >
+        <div className="w-6 h-10 border-2 border-gold/50 rounded-full flex justify-center pt-2 cursor-pointer" onClick={() => handleNavClick('#story')}>
+          <motion.div
+            className="w-1.5 h-1.5 bg-gold rounded-full"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+      </motion.div>
     </section>
   )
 }

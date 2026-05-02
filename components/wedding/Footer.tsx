@@ -51,7 +51,7 @@ export function Footer() {
 
         {/* Sanskrit blessing */}
         <motion.p
-          className="text-gold text-lg mb-8"
+          className="font-[var(--font-devanagari)] text-gold text-lg sm:text-xl mb-8 tracking-wide"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

@@ -99,11 +99,11 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 {/* Om symbol using text */}
                 <text
                   x="50"
-                  y="60"
+                  y="65"
                   textAnchor="middle"
                   fill="url(#omGradient)"
-                  fontSize="50"
-                  fontFamily="serif"
+                  fontSize="55"
+                  className="font-[var(--font-devanagari)]"
                   fontWeight="bold"
                 >
                   ॐ
@@ -166,7 +166,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
           {/* Sanskrit blessing */}
           <motion.p
-            className="absolute bottom-8 text-gold/40 text-xs tracking-widest"
+            className="absolute bottom-8 font-[var(--font-devanagari)] text-gold/40 text-sm tracking-wide"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}

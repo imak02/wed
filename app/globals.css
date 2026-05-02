@@ -51,6 +51,7 @@
   --font-serif: 'Cormorant Garamond', 'Georgia', serif;
   --font-mono: 'Geist Mono', monospace;
   --font-display: 'Great Vibes', cursive;
+  --font-devanagari: var(--font-devanagari), 'Tiro Devanagari Hindi', 'Noto Sans Devanagari', sans-serif;
   
   --color-background: var(--background);
   --color-foreground: var(--foreground);

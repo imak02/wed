@@ -8,7 +8,7 @@ const initialBlessings = [
   {
     id: 1,
     name: 'Aunt Kamala',
-    message: 'May your love story be as timeless as the Himalayas. Wishing you both a lifetime of happiness and togetherness. शुभ विवाह!',
+    message: 'May your love story be as timeless as the Himalayas. Wishing you both a lifetime of happiness and togetherness.',
     timestamp: '2 days ago',
   },
   {
