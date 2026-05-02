@@ -2,10 +2,202 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import Image from 'next/image'
 
 interface EnvelopeOpeningProps {
   onOpen: () => void
+}
+
+// Ganesh SVG Component - minimalist line art style
+function GaneshSVG({ className }: { className?: string }) {
+  return (
+    <svg 
+      viewBox="0 0 100 120" 
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Crown/Head decoration */}
+      <path 
+        d="M50 8 Q45 12 42 8 Q40 4 45 2 Q50 0 55 2 Q60 4 58 8 Q55 12 50 8" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        fill="currentColor"
+        opacity="0.3"
+      />
+      <circle cx="50" cy="5" r="2" fill="currentColor" />
+      
+      {/* Head outline */}
+      <path 
+        d="M35 25 Q30 30 28 40 Q26 50 30 58 Q32 62 38 65" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round"
+      />
+      <path 
+        d="M65 25 Q70 30 72 40 Q74 50 70 58 Q68 62 62 65" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round"
+      />
+      
+      {/* Ears */}
+      <path 
+        d="M28 35 Q18 32 15 42 Q12 52 20 55 Q25 56 28 50" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        strokeLinecap="round"
+      />
+      <path 
+        d="M72 35 Q82 32 85 42 Q88 52 80 55 Q75 56 72 50" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        strokeLinecap="round"
+      />
+      
+      {/* Eyes */}
+      <ellipse cx="40" cy="38" rx="4" ry="2.5" stroke="currentColor" strokeWidth="1.5" />
+      <ellipse cx="60" cy="38" rx="4" ry="2.5" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="40" cy="38" r="1" fill="currentColor" />
+      <circle cx="60" cy="38" r="1" fill="currentColor" />
+      
+      {/* Trunk */}
+      <path 
+        d="M50 45 Q48 50 45 58 Q42 66 38 75 Q35 82 40 88 Q45 92 50 88" 
+        stroke="currentColor" 
+        strokeWidth="2.5" 
+        strokeLinecap="round"
+        fill="none"
+      />
+      <path 
+        d="M50 45 Q52 50 50 55" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round"
+      />
+      
+      {/* Tusks */}
+      <path 
+        d="M42 60 Q38 62 35 58 Q33 55 36 54" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        fill="currentColor"
+        opacity="0.5"
+      />
+      <path 
+        d="M58 55 Q62 53 65 56 Q67 60 64 62" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        fill="currentColor"
+        opacity="0.5"
+      />
+      
+      {/* Forehead mark (tilak) */}
+      <path 
+        d="M50 28 L48 32 L50 30 L52 32 Z" 
+        fill="currentColor"
+      />
+      
+      {/* Body suggestion */}
+      <path 
+        d="M38 68 Q35 80 38 95 Q40 105 50 108 Q60 105 62 95 Q65 80 62 68" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        strokeLinecap="round"
+        opacity="0.6"
+      />
+      
+      {/* Decorative curves around */}
+      <path 
+        d="M25 20 Q20 25 22 35" 
+        stroke="currentColor" 
+        strokeWidth="1" 
+        opacity="0.4"
+      />
+      <path 
+        d="M75 20 Q80 25 78 35" 
+        stroke="currentColor" 
+        strokeWidth="1" 
+        opacity="0.4"
+      />
+    </svg>
+  )
+}
+
+// Decorative Diya (Oil Lamp) SVG
+function DiyaSVG({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 50 60" className={className} fill="none">
+      {/* Flame glow */}
+      <ellipse cx="25" cy="15" rx="8" ry="12" fill="url(#flameGlow)" opacity="0.3" />
+      {/* Flame */}
+      <path 
+        d="M25 5 Q28 10 27 18 Q26 22 25 25 Q24 22 23 18 Q22 10 25 5" 
+        fill="url(#flame)"
+      />
+      <path 
+        d="M25 8 Q26 12 25.5 16 Q25 18 25 20 Q25 18 24.5 16 Q24 12 25 8" 
+        fill="#FFE4B5"
+      />
+      {/* Lamp body */}
+      <path 
+        d="M15 35 Q10 38 12 45 Q14 52 25 55 Q36 52 38 45 Q40 38 35 35 Z" 
+        fill="url(#lampBody)"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
+      {/* Lamp top edge */}
+      <ellipse cx="25" cy="35" rx="10" ry="4" fill="url(#lampTop)" stroke="currentColor" strokeWidth="1" />
+      {/* Wick holder */}
+      <rect x="23" y="30" width="4" height="6" fill="currentColor" opacity="0.6" rx="1" />
+      {/* Base */}
+      <ellipse cx="25" cy="55" rx="8" ry="3" fill="currentColor" opacity="0.4" />
+      <defs>
+        <radialGradient id="flameGlow">
+          <stop offset="0%" stopColor="#FFA500" />
+          <stop offset="100%" stopColor="transparent" />
+        </radialGradient>
+        <linearGradient id="flame" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#FF6B35" />
+          <stop offset="50%" stopColor="#FFA500" />
+          <stop offset="100%" stopColor="#FFD700" />
+        </linearGradient>
+        <linearGradient id="lampBody" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#C9A227" />
+          <stop offset="100%" stopColor="#8B6914" />
+        </linearGradient>
+        <linearGradient id="lampTop" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#E5D080" />
+          <stop offset="100%" stopColor="#C9A227" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
+
+// Decorative Mandala Corner SVG
+function MandalaCorner({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={className} fill="none">
+      <defs>
+        <linearGradient id="mandalaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFD700" />
+          <stop offset="50%" stopColor="#C9A227" />
+          <stop offset="100%" stopColor="#8B6914" />
+        </linearGradient>
+      </defs>
+      {/* Concentric arcs */}
+      <path d="M0 100 Q0 50 50 0" stroke="url(#mandalaGold)" strokeWidth="2" />
+      <path d="M0 80 Q0 40 40 0" stroke="url(#mandalaGold)" strokeWidth="1.5" opacity="0.8" />
+      <path d="M0 60 Q0 30 30 0" stroke="url(#mandalaGold)" strokeWidth="1" opacity="0.6" />
+      {/* Decorative dots */}
+      <circle cx="10" cy="90" r="3" fill="url(#mandalaGold)" />
+      <circle cx="25" cy="75" r="2.5" fill="url(#mandalaGold)" opacity="0.8" />
+      <circle cx="40" cy="60" r="2" fill="url(#mandalaGold)" opacity="0.6" />
+      {/* Petal shapes */}
+      <path d="M5 70 Q15 65 10 55" stroke="url(#mandalaGold)" strokeWidth="1" opacity="0.7" />
+      <path d="M20 55 Q30 50 25 40" stroke="url(#mandalaGold)" strokeWidth="1" opacity="0.7" />
+    </svg>
+  )
 }
 
 export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
@@ -24,7 +216,7 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
     <AnimatePresence>
       {!isOpened && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden overflow-y-auto py-4 sm:py-6"
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
           style={{
             background: 'linear-gradient(145deg, #B91C1C 0%, #991B1B 30%, #7F1D1D 60%, #450A0A 100%)',
           }}
@@ -32,64 +224,55 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           {/* Golden decorative border at top */}
-          <div className="absolute top-0 left-0 right-0 h-8 sm:h-12 overflow-hidden">
-            <svg viewBox="0 0 1200 50" className="w-full h-full" preserveAspectRatio="none">
+          <div className="absolute top-0 left-0 right-0 h-6 sm:h-8 md:h-10 overflow-hidden">
+            <svg viewBox="0 0 1200 40" className="w-full h-full" preserveAspectRatio="none">
               <defs>
-                <pattern id="topBorder" x="0" y="0" width="100" height="50" patternUnits="userSpaceOnUse">
-                  <path d="M0 40 Q25 20, 50 40 T100 40" fill="none" stroke="#FFD700" strokeWidth="2" />
-                  <circle cx="50" cy="25" r="8" fill="none" stroke="#FFD700" strokeWidth="1.5" />
-                  <circle cx="50" cy="25" r="3" fill="#FFD700" />
+                <pattern id="topBorder" x="0" y="0" width="80" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M0 35 Q20 15, 40 35 T80 35" fill="none" stroke="#FFD700" strokeWidth="2" />
+                  <circle cx="40" cy="20" r="6" fill="none" stroke="#FFD700" strokeWidth="1.5" />
+                  <circle cx="40" cy="20" r="2" fill="#FFD700" />
                 </pattern>
               </defs>
-              <rect width="1200" height="50" fill="url(#topBorder)" />
+              <rect width="1200" height="40" fill="url(#topBorder)" />
             </svg>
           </div>
+
+          {/* Golden decorative border at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-6 sm:h-8 md:h-10 overflow-hidden rotate-180">
+            <svg viewBox="0 0 1200 40" className="w-full h-full" preserveAspectRatio="none">
+              <rect width="1200" height="40" fill="url(#topBorder)" />
+            </svg>
+          </div>
+
+          {/* Corner mandala decorations */}
+          <MandalaCorner className="absolute top-6 sm:top-8 md:top-10 left-0 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32" />
+          <MandalaCorner className="absolute top-6 sm:top-8 md:top-10 right-0 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 scale-x-[-1]" />
+          <MandalaCorner className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-0 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 scale-y-[-1]" />
+          <MandalaCorner className="absolute bottom-6 sm:bottom-8 md:bottom-10 right-0 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 scale-[-1]" />
 
           {/* Decorative mandala pattern background */}
           <div 
-            className="absolute inset-0 opacity-[0.08]"
+            className="absolute inset-0 opacity-[0.06]"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFD700' stroke-width='0.5'%3E%3Ccircle cx='60' cy='60' r='50'/%3E%3Ccircle cx='60' cy='60' r='40'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3Cpath d='M60 10 L60 110 M10 60 L110 60 M25 25 L95 95 M95 25 L25 95'/%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '120px 120px',
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFD700' stroke-width='0.5'%3E%3Ccircle cx='50' cy='50' r='45'/%3E%3Ccircle cx='50' cy='50' r='35'/%3E%3Ccircle cx='50' cy='50' r='25'/%3E%3Ccircle cx='50' cy='50' r='15'/%3E%3Cpath d='M50 5 L50 95 M5 50 L95 50 M20 20 L80 80 M80 20 L20 80'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '100px 100px',
             }}
           />
 
-          {/* Corner mandala decorations */}
-          <div className="absolute top-8 sm:top-12 left-0 w-24 sm:w-40 h-24 sm:h-40 opacity-20">
-            <svg viewBox="0 0 100 100" className="w-full h-full text-gold">
-              <circle cx="0" cy="0" r="80" fill="none" stroke="currentColor" strokeWidth="0.5" />
-              <circle cx="0" cy="0" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" />
-              <circle cx="0" cy="0" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-              {[...Array(8)].map((_, i) => (
-                <line key={i} x1="0" y1="0" x2="100" y2="0" stroke="currentColor" strokeWidth="0.5" transform={`rotate(${i * 45})`} />
-              ))}
-            </svg>
-          </div>
-          <div className="absolute top-8 sm:top-12 right-0 w-24 sm:w-40 h-24 sm:h-40 opacity-20 scale-x-[-1]">
-            <svg viewBox="0 0 100 100" className="w-full h-full text-gold">
-              <circle cx="0" cy="0" r="80" fill="none" stroke="currentColor" strokeWidth="0.5" />
-              <circle cx="0" cy="0" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" />
-              <circle cx="0" cy="0" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-              {[...Array(8)].map((_, i) => (
-                <line key={i} x1="0" y1="0" x2="100" y2="0" stroke="currentColor" strokeWidth="0.5" transform={`rotate(${i * 45})`} />
-              ))}
-            </svg>
-          </div>
-
           {/* Floating golden particles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(25)].map((_, i) => (
+            {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1.5 h-1.5 rounded-full"
+                className="absolute w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
+                  left: `${10 + Math.random() * 80}%`,
+                  top: `${10 + Math.random() * 80}%`,
                   background: 'radial-gradient(circle, #FFD700, #C9A227)',
                 }}
                 animate={{
-                  y: [0, -40, 0],
-                  opacity: [0.3, 1, 0.3],
+                  y: [0, -30, 0],
+                  opacity: [0.2, 0.8, 0.2],
                   scale: [0.8, 1.2, 0.8],
                 }}
                 transition={{
@@ -104,13 +287,13 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
 
           {/* Ambient glow */}
           <motion.div
-            className="absolute w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full"
+            className="absolute w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full"
             style={{
-              background: 'radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%)',
             }}
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.4, 0.6, 0.4],
+              scale: [1, 1.15, 1],
+              opacity: [0.3, 0.5, 0.3],
             }}
             transition={{
               duration: 5,
@@ -119,71 +302,56 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
             }}
           />
 
-          {/* Main scroll container */}
+          {/* Main scroll container with proper margins */}
           <motion.div
-            className="relative flex flex-col items-center px-3 sm:px-4 w-full max-w-[95vw] sm:max-w-none"
+            className="relative flex flex-col items-center w-full px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12 mx-4 sm:mx-6 md:mx-8"
             initial={{ scale: 0.85, opacity: 0, y: 40 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
           >
-            {/* Ganesh Image at top */}
+            {/* Ganesh SVG at top */}
             <motion.div
-              className="mb-2 sm:mb-4"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
+              className="mb-2 sm:mb-3 md:mb-4"
+              initial={{ opacity: 0, scale: 0.5, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28">
-                <Image
-                  src="/images/ganesh.jpg"
-                  alt="Lord Ganesha"
-                  fill
-                  className="object-contain drop-shadow-lg"
-                  priority
-                />
+              <div className="relative">
+                <GaneshSVG className="w-14 h-16 sm:w-20 sm:h-24 md:w-24 md:h-28 text-gold drop-shadow-lg" />
                 {/* Glow effect */}
-                <div className="absolute inset-0 blur-xl bg-gold/20 -z-10" />
+                <div className="absolute inset-0 blur-xl bg-gold/15 -z-10" />
               </div>
             </motion.div>
 
             {/* The Sacred Scroll/Patra */}
-            <div className="relative w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[550px]">
+            <div className="relative w-full max-w-[280px] sm:max-w-[360px] md:max-w-[440px] lg:max-w-[500px]">
               {/* Top scroll curl */}
               <motion.div 
-                className="relative h-8 sm:h-10 md:h-14 mb-[-2px] z-10"
+                className="relative h-6 sm:h-8 md:h-10 mb-[-2px] z-10"
                 initial={{ scaleY: 1 }}
                 animate={isOpening ? { scaleY: 0, opacity: 0 } : { scaleY: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <svg viewBox="0 0 400 50" className="w-full h-full" preserveAspectRatio="none">
+                <svg viewBox="0 0 400 40" className="w-full h-full" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="scrollTop" x1="0%" y1="0%" x2="0%" y2="100%">
                       <stop offset="0%" stopColor="#F5E6C8" />
                       <stop offset="50%" stopColor="#E8D5A8" />
                       <stop offset="100%" stopColor="#D4C494" />
                     </linearGradient>
-                    <linearGradient id="scrollShadow" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#8B7355" />
-                      <stop offset="100%" stopColor="#C4B484" />
-                    </linearGradient>
                   </defs>
-                  {/* Scroll curl shadow */}
-                  <ellipse cx="200" cy="45" rx="190" ry="8" fill="rgba(0,0,0,0.2)" />
-                  {/* Main curl */}
-                  <path d="M10 50 Q10 10, 200 10 Q390 10, 390 50" fill="url(#scrollTop)" />
-                  {/* Curl edge detail */}
-                  <path d="M15 48 Q15 15, 200 15 Q385 15, 385 48" fill="none" stroke="#C9A227" strokeWidth="1" opacity="0.5" />
-                  {/* Decorative line */}
-                  <path d="M50 35 L350 35" fill="none" stroke="#8B1A1A" strokeWidth="0.5" opacity="0.3" />
+                  <ellipse cx="200" cy="36" rx="190" ry="6" fill="rgba(0,0,0,0.15)" />
+                  <path d="M10 40 Q10 8, 200 8 Q390 8, 390 40" fill="url(#scrollTop)" />
+                  <path d="M15 38 Q15 12, 200 12 Q385 12, 385 38" fill="none" stroke="#C9A227" strokeWidth="1" opacity="0.6" />
                 </svg>
               </motion.div>
 
               {/* Main scroll body */}
               <motion.div
-                className="relative overflow-hidden"
+                className="relative overflow-hidden rounded-sm"
                 style={{
-                  background: 'linear-gradient(180deg, #F5E6C8 0%, #EDE0C8 50%, #E8D5A8 100%)',
-                  boxShadow: '0 20px 60px -15px rgba(0,0,0,0.4), inset 0 0 30px rgba(139,26,26,0.05)',
+                  background: 'linear-gradient(180deg, #F8EDD8 0%, #F2E4C8 50%, #ECD9B8 100%)',
+                  boxShadow: '0 15px 50px -10px rgba(0,0,0,0.35), inset 0 0 40px rgba(139,26,26,0.04)',
                 }}
                 initial={{ height: 'auto', opacity: 1 }}
                 animate={isOpening ? { 
@@ -193,105 +361,91 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
                 } : {}}
               >
                 {/* Ornate border frame */}
-                <div className="absolute inset-3 sm:inset-4 md:inset-6 border-2 border-maroon/30 pointer-events-none">
-                  <div className="absolute inset-1.5 sm:inset-2 border border-gold/50" />
+                <div className="absolute inset-2 sm:inset-3 md:inset-4 border-2 border-red-800/40 pointer-events-none rounded-sm">
+                  <div className="absolute inset-1.5 sm:inset-2 border border-gold/60 rounded-sm" />
                   
                   {/* Corner ornaments */}
                   {['top-0 left-0', 'top-0 right-0 scale-x-[-1]', 'bottom-0 left-0 scale-y-[-1]', 'bottom-0 right-0 scale-[-1]'].map((pos, i) => (
-                    <svg key={i} className={`absolute ${pos} w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-maroon/50`} viewBox="0 0 50 50">
-                      <path d="M5 45 Q5 5 45 5" fill="none" stroke="currentColor" strokeWidth="2" />
-                      <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.5" />
-                      <path d="M5 35 Q5 15 25 15" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+                    <svg key={i} className={`absolute ${pos} w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-red-800`} viewBox="0 0 50 50">
+                      <path d="M5 45 Q5 5 45 5" fill="none" stroke="currentColor" strokeWidth="2.5" />
+                      <circle cx="10" cy="10" r="3" fill="currentColor" />
+                      <path d="M5 32 Q5 15 22 15" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.6" />
                     </svg>
                   ))}
                 </div>
 
                 {/* Content */}
-                <div className="relative px-5 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10 text-center">
+                <div className="relative px-4 sm:px-6 md:px-10 py-5 sm:py-6 md:py-8 text-center">
                   {/* Swastik symbol */}
                   <div className="flex justify-center mb-2 sm:mb-3">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-maroon" viewBox="0 0 40 40">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-red-800" viewBox="0 0 40 40">
                       <path d="M20 5 L20 35 M5 20 L35 20" stroke="currentColor" strokeWidth="3" />
                       <path d="M20 5 L28 5 M20 35 L12 35 M5 20 L5 12 M35 20 L35 28" stroke="currentColor" strokeWidth="3" />
                     </svg>
                   </div>
 
-                  {/* Sanskrit blessing - Shubh Vivah title */}
-                  <h1 className="font-[var(--font-devanagari)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-1 sm:mb-2"
+                  {/* Sanskrit blessing - Shubh Vivah title with RED color */}
+                  <h1 
+                    className="font-[var(--font-devanagari)] text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-1 font-bold text-red-800"
                     style={{
-                      background: 'linear-gradient(135deg, #C9A227 0%, #E5D080 40%, #FFD700 60%, #C9A227 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                      fontWeight: 700,
+                      textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                     }}
                   >
                     शुभ विवाह
                   </h1>
-                  <p className="font-[var(--font-heading)] text-maroon text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6 font-semibold">
+                  <p className="font-[var(--font-heading)] text-red-700 text-[9px] sm:text-[10px] md:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase mb-3 sm:mb-4 md:mb-5 font-semibold">
                     Wedding Invitation
                   </p>
 
-                  {/* Decorative divider */}
-                  <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                    <div className="w-10 sm:w-12 md:w-16 h-px bg-gradient-to-r from-transparent via-gold to-gold" />
-                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-gold rounded-full shadow-sm" />
-                    <div className="w-10 sm:w-12 md:w-16 h-px bg-gradient-to-l from-transparent via-gold to-gold" />
+                  {/* Decorative divider with diyas */}
+                  <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-5">
+                    <DiyaSVG className="w-6 h-8 sm:w-7 sm:h-9 md:w-8 md:h-10 text-gold" />
+                    <div className="w-8 sm:w-10 md:w-14 h-px bg-gradient-to-r from-transparent via-gold to-gold" />
+                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-red-800 rounded-full shadow-sm" />
+                    <div className="w-8 sm:w-10 md:w-14 h-px bg-gradient-to-l from-transparent via-gold to-gold" />
+                    <DiyaSVG className="w-6 h-8 sm:w-7 sm:h-9 md:w-8 md:h-10 text-gold" />
                   </div>
 
-                  {/* Couple names with better visibility */}
-                  <h2 className="font-[var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-1"
+                  {/* Couple names with RED color */}
+                  <h2 
+                    className="font-[var(--font-display)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-0.5 text-red-800"
                     style={{
-                      background: 'linear-gradient(135deg, #C9A227 0%, #E5D080 40%, #FFD700 60%, #C9A227 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      filter: 'drop-shadow(0 2px 2px rgba(0,0,0,0.15))',
+                      textShadow: '0 2px 4px rgba(0,0,0,0.08)',
                     }}
                   >
                     Smriti
                   </h2>
-                  <div className="flex items-center justify-center gap-2 sm:gap-3 my-1 sm:my-2">
-                    <div className="w-6 sm:w-8 h-px bg-gold" />
-                    <span className="text-maroon text-xl sm:text-2xl md:text-3xl font-serif font-bold">&</span>
-                    <div className="w-6 sm:w-8 h-px bg-gold" />
+                  <div className="flex items-center justify-center gap-2 sm:gap-3 my-1">
+                    <div className="w-5 sm:w-6 md:w-8 h-px bg-gold" />
+                    <span className="text-red-700 text-lg sm:text-xl md:text-2xl font-serif font-bold">&</span>
+                    <div className="w-5 sm:w-6 md:w-8 h-px bg-gold" />
                   </div>
-                  <h2 className="font-[var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-4 sm:mb-6"
+                  <h2 
+                    className="font-[var(--font-display)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-3 sm:mb-4 text-red-800"
                     style={{
-                      background: 'linear-gradient(135deg, #C9A227 0%, #E5D080 40%, #FFD700 60%, #C9A227 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      filter: 'drop-shadow(0 2px 2px rgba(0,0,0,0.15))',
+                      textShadow: '0 2px 4px rgba(0,0,0,0.08)',
                     }}
                   >
                     Asbin
                   </h2>
 
                   {/* Date with better styling */}
-                  <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-gold/50 rounded-full bg-gold/10">
-                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-maroon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 border-2 border-gold/60 rounded-full bg-gold/10">
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="font-[var(--font-heading)] text-maroon text-xs sm:text-sm md:text-base tracking-wider font-semibold">
+                    <span className="font-[var(--font-heading)] text-red-800 text-[10px] sm:text-xs md:text-sm tracking-wider font-semibold">
                       23rd June 2026
                     </span>
                   </div>
 
-                  {/* Diya / Oil lamp decoration */}
-                  <div className="flex justify-center mt-4 sm:mt-6 gap-4 sm:gap-6">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-gold" viewBox="0 0 40 40">
-                      <ellipse cx="20" cy="32" rx="12" ry="5" fill="currentColor" opacity="0.7" />
-                      <path d="M12 32 Q20 20 28 32" fill="currentColor" opacity="0.9" />
-                      <ellipse cx="20" cy="15" rx="3" ry="6" fill="#FF6B35" opacity="0.9" />
-                      <ellipse cx="20" cy="12" rx="1.5" ry="3" fill="#FFD700" />
-                    </svg>
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-gold" viewBox="0 0 40 40">
-                      <ellipse cx="20" cy="32" rx="12" ry="5" fill="currentColor" opacity="0.7" />
-                      <path d="M12 32 Q20 20 28 32" fill="currentColor" opacity="0.9" />
-                      <ellipse cx="20" cy="15" rx="3" ry="6" fill="#FF6B35" opacity="0.9" />
-                      <ellipse cx="20" cy="12" rx="1.5" ry="3" fill="#FFD700" />
+                  {/* Bottom decorative element */}
+                  <div className="flex justify-center mt-3 sm:mt-4 md:mt-5">
+                    <svg className="w-16 sm:w-20 md:w-24 h-3 sm:h-4 text-gold" viewBox="0 0 100 15" fill="none">
+                      <path d="M0 7.5 Q25 0, 50 7.5 T100 7.5" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="50" cy="7.5" r="3" fill="currentColor" />
+                      <circle cx="25" cy="7.5" r="1.5" fill="currentColor" opacity="0.6" />
+                      <circle cx="75" cy="7.5" r="1.5" fill="currentColor" opacity="0.6" />
                     </svg>
                   </div>
                 </div>
@@ -299,12 +453,12 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
 
               {/* Bottom scroll curl */}
               <motion.div 
-                className="relative h-8 sm:h-10 md:h-14 mt-[-2px] z-10"
+                className="relative h-6 sm:h-8 md:h-10 mt-[-2px] z-10"
                 initial={{ scaleY: 1 }}
                 animate={isOpening ? { scaleY: 0, opacity: 0 } : { scaleY: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <svg viewBox="0 0 400 50" className="w-full h-full" preserveAspectRatio="none">
+                <svg viewBox="0 0 400 40" className="w-full h-full" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="scrollBottom" x1="0%" y1="100%" x2="0%" y2="0%">
                       <stop offset="0%" stopColor="#F5E6C8" />
@@ -312,16 +466,14 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
                       <stop offset="100%" stopColor="#D4C494" />
                     </linearGradient>
                   </defs>
-                  {/* Main curl */}
-                  <path d="M10 0 Q10 40, 200 40 Q390 40, 390 0" fill="url(#scrollBottom)" />
-                  {/* Curl edge detail */}
-                  <path d="M15 2 Q15 35, 200 35 Q385 35, 385 2" fill="none" stroke="#C9A227" strokeWidth="1" opacity="0.5" />
+                  <path d="M10 0 Q10 32, 200 32 Q390 32, 390 0" fill="url(#scrollBottom)" />
+                  <path d="M15 2 Q15 28, 200 28 Q385 28, 385 2" fill="none" stroke="#C9A227" strokeWidth="1" opacity="0.6" />
                 </svg>
               </motion.div>
 
               {/* Wax seal */}
               <motion.div
-                className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 z-20"
+                className="absolute -bottom-2 sm:-bottom-3 left-1/2 -translate-x-1/2 z-20"
                 initial={{ scale: 1, rotate: 0 }}
                 animate={isOpening ? { 
                   scale: 0, 
@@ -331,14 +483,14 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 <div 
-                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center"
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center"
                   style={{
                     background: 'radial-gradient(circle at 30% 30%, #DC2626, #B91C1C 40%, #7F1D1D 80%, #450A0A)',
-                    boxShadow: '0 6px 20px rgba(0,0,0,0.4), inset 0 2px 6px rgba(255,255,255,0.15)',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.35), inset 0 1px 4px rgba(255,255,255,0.12)',
                   }}
                 >
-                  <div className="absolute inset-1 sm:inset-1.5 rounded-full border border-gold/40" />
-                  <span className="font-[var(--font-heading)] text-gold text-sm sm:text-base md:text-lg font-bold">
+                  <div className="absolute inset-1 rounded-full border border-gold/50" />
+                  <span className="font-[var(--font-heading)] text-gold text-xs sm:text-sm md:text-base font-bold">
                     S&A
                   </span>
                 </div>
@@ -349,7 +501,7 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
             <motion.button
               onClick={handleOpen}
               disabled={isOpening}
-              className="mt-8 sm:mt-10 md:mt-12 group cursor-pointer disabled:cursor-not-allowed"
+              className="mt-6 sm:mt-8 md:mt-10 group cursor-pointer disabled:cursor-not-allowed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
@@ -357,23 +509,23 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
               whileTap={{ scale: 0.95 }}
             >
               <div 
-                className="relative px-8 py-3 sm:px-10 sm:py-3.5 md:px-14 md:py-4 rounded-full overflow-hidden"
+                className="relative px-6 py-2.5 sm:px-8 sm:py-3 md:px-10 md:py-3.5 rounded-full overflow-hidden"
                 style={{
                   background: 'linear-gradient(135deg, #C9A227 0%, #E5D080 50%, #C9A227 100%)',
-                  boxShadow: '0 8px 30px -5px rgba(201,162,39,0.5)',
+                  boxShadow: '0 6px 25px -4px rgba(201,162,39,0.5)',
                 }}
               >
                 {/* Shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 
-                <span className="relative font-[var(--font-heading)] text-maroon font-bold text-xs sm:text-sm md:text-base tracking-wider uppercase flex items-center gap-2">
+                <span className="relative font-[var(--font-heading)] text-red-900 font-bold text-[11px] sm:text-xs md:text-sm tracking-wider uppercase flex items-center gap-1.5 sm:gap-2">
                   {isOpening ? (
                     <>
                       <motion.span
                         animate={{ rotate: 360 }}
                         transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                       >
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
                       </motion.span>
@@ -381,7 +533,7 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
                     </>
                   ) : (
                     <>
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                       </svg>
                       Open Invitation
@@ -394,36 +546,22 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
 
           {/* Bottom blessing */}
           <motion.div
-            className="absolute bottom-3 sm:bottom-6 md:bottom-10 left-0 right-0 flex flex-col items-center gap-1 sm:gap-2 px-4"
+            className="absolute bottom-8 sm:bottom-10 md:bottom-14 left-0 right-0 flex flex-col items-center gap-1 px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4 }}
           >
-            <div className="flex items-center gap-2 sm:gap-4">
-              <div className="w-8 sm:w-10 md:w-14 h-px bg-gold/50" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-6 sm:w-8 md:w-12 h-px bg-gold/60" />
               <p className="font-[var(--font-devanagari)] text-gold text-sm sm:text-base md:text-lg font-medium">
                 सात फेरे, एक जीवन
               </p>
-              <div className="w-8 sm:w-10 md:w-14 h-px bg-gold/50" />
+              <div className="w-6 sm:w-8 md:w-12 h-px bg-gold/60" />
             </div>
-            <p className="text-ivory/70 text-[10px] sm:text-xs tracking-widest uppercase font-medium">
+            <p className="text-ivory/80 text-[9px] sm:text-[10px] md:text-xs tracking-widest uppercase font-medium">
               Tap to reveal your invitation
             </p>
           </motion.div>
-
-          {/* Golden decorative border at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 h-6 sm:h-10 overflow-hidden">
-            <svg viewBox="0 0 1200 50" className="w-full h-full" preserveAspectRatio="none">
-              <defs>
-                <pattern id="bottomBorder" x="0" y="0" width="100" height="50" patternUnits="userSpaceOnUse">
-                  <path d="M0 10 Q25 30, 50 10 T100 10" fill="none" stroke="#FFD700" strokeWidth="2" />
-                  <circle cx="50" cy="25" r="8" fill="none" stroke="#FFD700" strokeWidth="1.5" />
-                  <circle cx="50" cy="25" r="3" fill="#FFD700" />
-                </pattern>
-              </defs>
-              <rect width="1200" height="50" fill="url(#bottomBorder)" />
-            </svg>
-          </div>
         </motion.div>
       )}
     </AnimatePresence>
