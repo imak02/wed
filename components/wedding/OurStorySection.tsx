@@ -48,7 +48,7 @@ export function OurStorySection() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4">Our Love Story</p>
-          <h2 className="font-[var(--font-great-vibes)] text-4xl sm:text-6xl text-maroon mb-4">
+          <h2 className="font-[var(--font-display)] text-4xl sm:text-6xl text-maroon mb-4">
             How It All Began
           </h2>
           <div className="flex items-center justify-center gap-4">
@@ -142,7 +142,7 @@ function StoryCard({ story, index }: StoryCardProps) {
         <span className="inline-block px-4 py-1 bg-gold/10 rounded-full text-gold text-sm mb-4">
           {story.date}
         </span>
-        <h3 className="font-[var(--font-great-vibes)] text-3xl sm:text-4xl text-maroon mb-4">
+        <h3 className="font-[var(--font-display)] text-3xl sm:text-4xl text-maroon mb-4">
           {story.title}
         </h3>
         <p className="text-maroon/70 leading-relaxed text-center lg:text-left">

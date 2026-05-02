@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
+import { WeddingLogo } from './WeddingLogo'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -12,24 +13,20 @@ export function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Monogram */}
+        {/* Logo */}
         <motion.div
-          className="mb-8"
+          className="mb-8 flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center justify-center w-24 h-24 rounded-full border-2 border-gold/30">
-            <span className="font-[var(--font-great-vibes)] text-4xl text-gold">
-              S & A
-            </span>
-          </div>
+          <WeddingLogo size="lg" />
         </motion.div>
 
         {/* Couple names */}
         <motion.h3
-          className="font-[var(--font-great-vibes)] text-3xl sm:text-4xl text-ivory mb-4"
+          className="font-[var(--font-display)] text-4xl sm:text-5xl text-ivory mb-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -40,7 +37,7 @@ export function Footer() {
 
         {/* Tagline */}
         <motion.p
-          className="text-ivory/70 mb-6"
+          className="font-[var(--font-heading)] text-ivory/70 mb-6 tracking-[0.15em] uppercase text-sm"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -51,7 +48,7 @@ export function Footer() {
 
         {/* Sanskrit blessing */}
         <motion.p
-          className="text-gold text-lg mb-8"
+          className="font-[var(--font-devanagari)] text-gold text-lg sm:text-xl mb-8 tracking-wide"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -69,7 +66,7 @@ export function Footer() {
 
         {/* Wedding date */}
         <motion.p
-          className="text-ivory/60 text-sm mb-2"
+          className="font-[var(--font-heading)] text-ivory/60 text-sm mb-2 tracking-wider"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

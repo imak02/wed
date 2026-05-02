@@ -8,7 +8,7 @@ const initialBlessings = [
   {
     id: 1,
     name: 'Aunt Kamala',
-    message: 'May your love story be as timeless as the Himalayas. Wishing you both a lifetime of happiness and togetherness. शुभ विवाह!',
+    message: 'May your love story be as timeless as the Himalayas. Wishing you both a lifetime of happiness and togetherness.',
     timestamp: '2 days ago',
   },
   {
@@ -105,7 +105,7 @@ export function BlessingsSection() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4">Shower Your Love</p>
-          <h2 className="font-[var(--font-great-vibes)] text-4xl sm:text-6xl text-ivory mb-4">
+          <h2 className="font-[var(--font-display)] text-4xl sm:text-6xl text-ivory mb-4">
             Blessings & Wishes
           </h2>
           <div className="flex items-center justify-center gap-4">

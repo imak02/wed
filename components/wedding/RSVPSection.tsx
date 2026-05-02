@@ -27,7 +27,21 @@ export function RSVPSection() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate API call
+    // Create mailto link to send RSVP
+    const subject = encodeURIComponent(`Wedding RSVP: ${formData.name}`)
+    const body = encodeURIComponent(
+      `RSVP Details:\n\n` +
+      `Name: ${formData.name}\n` +
+      `Attending: ${formData.attending === 'yes' ? 'Yes, joyfully accepting!' : 'Regretfully declining'}\n` +
+      `${formData.attending === 'yes' ? `Number of Guests: ${formData.guests}\n` : ''}` +
+      `${formData.attending === 'yes' && formData.meal ? `Meal Preference: ${formData.meal}\n` : ''}` +
+      `${formData.message ? `\nMessage:\n${formData.message}` : ''}`
+    )
+    
+    // Open mailto link
+    window.location.href = `mailto:ramthapa@proton.me?subject=${subject}&body=${body}`
+
+    // Wait a moment then show success
     await new Promise((resolve) => setTimeout(resolve, 1500))
 
     setIsSubmitting(false)
@@ -56,8 +70,8 @@ export function RSVPSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4">Be Our Guest</p>
-          <h2 className="font-[var(--font-great-vibes)] text-4xl sm:text-6xl text-maroon mb-4">
+          <p className="font-[var(--font-heading)] text-gold text-sm tracking-[0.3em] uppercase mb-4">Be Our Guest</p>
+          <h2 className="font-[var(--font-display)] text-5xl sm:text-7xl text-maroon mb-4">
             RSVP
           </h2>
           <p className="text-maroon/60 max-w-lg mx-auto">
@@ -289,7 +303,7 @@ function SuccessState() {
       </motion.div>
 
       <motion.h3
-        className="font-[var(--font-great-vibes)] text-3xl sm:text-4xl text-maroon mb-3"
+        className="font-[var(--font-display)] text-3xl sm:text-4xl text-maroon mb-3"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
@@ -303,7 +317,7 @@ function SuccessState() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
       >
-        Your response has been received. We are so grateful and excited to celebrate this special day with you!
+        Your email client should open with your RSVP details. Please send the email to complete your response. We are so grateful and excited to celebrate this special day with you!
       </motion.p>
 
       <motion.div

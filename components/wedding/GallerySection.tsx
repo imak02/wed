@@ -74,7 +74,7 @@ export function GallerySection() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4">Memories</p>
-          <h2 className="font-[var(--font-great-vibes)] text-4xl sm:text-6xl text-ivory mb-4">
+          <h2 className="font-[var(--font-display)] text-4xl sm:text-6xl text-ivory mb-4">
             Our Gallery
           </h2>
           <div className="flex items-center justify-center gap-4">

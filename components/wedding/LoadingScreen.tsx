@@ -99,11 +99,11 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 {/* Om symbol using text */}
                 <text
                   x="50"
-                  y="60"
+                  y="65"
                   textAnchor="middle"
                   fill="url(#omGradient)"
-                  fontSize="50"
-                  fontFamily="serif"
+                  fontSize="55"
+                  className="font-[var(--font-devanagari)]"
                   fontWeight="bold"
                 >
                   ॐ
@@ -136,10 +136,10 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h1 className="font-[var(--font-great-vibes)] text-3xl sm:text-4xl md:text-5xl text-ivory mb-2">
+            <h1 className="font-[var(--font-display)] text-4xl sm:text-5xl md:text-6xl text-ivory mb-2">
               Smriti & Asbin
             </h1>
-            <p className="text-gold/80 tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-xs">
+            <p className="font-[var(--font-heading)] text-gold/80 tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-xs">
               Wedding Invitation
             </p>
           </motion.div>
@@ -166,7 +166,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
           {/* Sanskrit blessing */}
           <motion.p
-            className="absolute bottom-8 text-gold/40 text-xs tracking-widest"
+            className="absolute bottom-8 font-[var(--font-devanagari)] text-gold/40 text-sm tracking-wide"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}

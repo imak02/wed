@@ -57,7 +57,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 pb-32"
     >
       {/* Background image with overlay */}
       <div className="absolute inset-0">
@@ -132,10 +132,10 @@ export function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto flex-1 flex flex-col justify-center">
         {/* Sanskrit blessing */}
         <motion.p
-          className="text-gold text-sm sm:text-base tracking-[0.3em] uppercase mb-4"
+          className="font-[var(--font-devanagari)] text-gold text-base sm:text-lg tracking-wider mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -161,18 +161,18 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <h1 className="font-[var(--font-great-vibes)] text-5xl sm:text-7xl lg:text-8xl text-ivory mb-2">
+          <h1 className="font-[var(--font-display)] text-6xl sm:text-8xl lg:text-9xl text-ivory mb-2">
             Smriti
           </h1>
-          <p className="text-gold text-2xl sm:text-3xl mb-2">&</p>
-          <h1 className="font-[var(--font-great-vibes)] text-5xl sm:text-7xl lg:text-8xl text-ivory">
+          <p className="text-gold text-2xl sm:text-3xl mb-2 font-serif">&</p>
+          <h1 className="font-[var(--font-display)] text-6xl sm:text-8xl lg:text-9xl text-ivory">
             Asbin
           </h1>
         </motion.div>
 
         {/* Tagline */}
         <motion.p
-          className="text-ivory/80 text-lg sm:text-xl mt-6 mb-8 font-light tracking-wide"
+          className="font-[var(--font-heading)] text-ivory/80 text-lg sm:text-xl mt-6 mb-8 tracking-[0.2em] uppercase"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
@@ -188,7 +188,7 @@ export function HeroSection() {
           transition={{ delay: 0.7 }}
         >
           <Calendar className="w-5 h-5" />
-          <span className="text-lg sm:text-xl tracking-wide">June 23, 2026</span>
+          <span className="font-[var(--font-heading)] text-lg sm:text-xl tracking-wider">June 23, 2026</span>
         </motion.div>
 
         {/* Countdown timer */}
@@ -218,7 +218,7 @@ export function HeroSection() {
               >
                 {String(item.value).padStart(2, '0')}
               </motion.span>
-              <span className="text-xs sm:text-sm text-gold/80 uppercase tracking-wider">
+              <span className="font-[var(--font-heading)] text-[10px] sm:text-xs text-gold/80 uppercase tracking-wider">
                 {item.label}
               </span>
             </motion.div>
@@ -227,56 +227,56 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
           <motion.button
             onClick={() => handleNavClick('#events')}
-            className="group relative px-8 py-3.5 bg-gradient-to-r from-gold-dark via-gold to-gold-dark text-maroon font-semibold rounded-full shadow-lg overflow-hidden cursor-pointer"
+            className="group relative px-8 py-3.5 bg-gradient-to-r from-gold-dark via-gold to-gold-dark text-maroon font-[var(--font-heading)] font-semibold tracking-wider uppercase rounded-full shadow-lg overflow-hidden cursor-pointer"
             whileHover={{ scale: 1.05, boxShadow: '0 20px 40px -10px rgba(201,162,39,0.4)' }}
             whileTap={{ scale: 0.95 }}
           >
             {/* Shimmer effect */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            <span className="relative flex items-center gap-2">
+            <span className="relative flex items-center gap-2 text-sm">
               <Calendar className="w-5 h-5" />
               View Events
             </span>
           </motion.button>
           <motion.button
             onClick={() => handleNavClick('#rsvp')}
-            className="group px-8 py-3.5 bg-transparent border-2 border-gold text-gold font-semibold rounded-full hover:bg-gold/10 transition-colors cursor-pointer"
+            className="group px-8 py-3.5 bg-transparent border-2 border-gold text-gold font-[var(--font-heading)] font-semibold tracking-wider uppercase rounded-full hover:bg-gold/10 transition-colors cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-2 text-sm">
               <MapPin className="w-5 h-5" />
               RSVP Now
             </span>
           </motion.button>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{
-            opacity: { delay: 1.5 },
-            y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
-          }}
-        >
-          <div className="w-6 h-10 border-2 border-gold/50 rounded-full flex justify-center pt-2 cursor-pointer" onClick={() => handleNavClick('#story')}>
-            <motion.div
-              className="w-1.5 h-1.5 bg-gold rounded-full"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </div>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator - positioned at the bottom of the section */}
+      <motion.div
+        className="relative z-10 pb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          opacity: { delay: 1.5 },
+          y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
+        }}
+      >
+        <div className="w-6 h-10 border-2 border-gold/50 rounded-full flex justify-center pt-2 cursor-pointer" onClick={() => handleNavClick('#story')}>
+          <motion.div
+            className="w-1.5 h-1.5 bg-gold rounded-full"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+      </motion.div>
     </section>
   )
 }
