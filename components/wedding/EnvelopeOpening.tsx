@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import Image from 'next/image'
+import { WeddingLogo } from './WeddingLogo'
 
 interface EnvelopeOpeningProps {
   onOpen: () => void
@@ -73,32 +73,6 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            {/* Top wooden rod - using image */}
-            <motion.div 
-              className="mb-1 sm:mb-2"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="w-20 sm:w-24 md:w-28 h-6 sm:h-7 md:h-8 relative">
-                <Image
-                  src="/images/wooden-rod.jpg"
-                  alt="Wooden Rod"
-                  fill
-                  className="object-contain drop-shadow-lg"
-                  priority
-                />
-              </div>
-            </motion.div>
-
-            {/* Hanging rope from top rod */}
-            <div className="w-12 sm:w-16 md:w-20 h-3 sm:h-4 md:h-5">
-              <svg viewBox="0 0 100 40" className="w-full h-full">
-                <line x1="25" y1="0" x2="50" y2="40" stroke="#8B6914" strokeWidth="2" />
-                <line x1="75" y1="0" x2="50" y2="40" stroke="#8B6914" strokeWidth="2" />
-              </svg>
-            </div>
-
             {/* The Sacred Scroll - curved shape */}
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
               <motion.div
@@ -171,57 +145,22 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
                 </div>
               </motion.div>
 
-              {/* Wax seal */}
+              {/* Wedding Logo seal */}
               <motion.div
-                className="absolute -bottom-2 left-1/2 -translate-x-1/2 z-20"
+                className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20"
                 initial={{ scale: 1, rotate: 0 }}
                 animate={isOpening ? { scale: 0, rotate: 180, opacity: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <div 
-                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center"
-                  style={{
-                    background: 'radial-gradient(circle at 30% 30%, #FCD34D, #C9A227 50%, #B8860B 100%)',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.4), inset 0 1px 3px rgba(255,255,255,0.2)',
-                    border: '2px solid #8B6914',
-                  }}
-                >
-                  <span className="font-serif text-red-800 text-xs sm:text-sm font-bold">S&A</span>
-                </div>
+                <WeddingLogo size="lg" animated={false} />
               </motion.div>
             </div>
-
-            {/* Hanging rope from bottom rod */}
-            <div className="w-12 sm:w-16 md:w-20 h-3 sm:h-4 md:h-5">
-              <svg viewBox="0 0 100 40" className="w-full h-full">
-                <line x1="50" y1="0" x2="25" y2="40" stroke="#8B6914" strokeWidth="2" />
-                <line x1="50" y1="0" x2="75" y2="40" stroke="#8B6914" strokeWidth="2" />
-              </svg>
-            </div>
-
-            {/* Bottom wooden rod - using image */}
-            <motion.div 
-              className="mt-1 sm:mt-2"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="w-20 sm:w-24 md:w-28 h-6 sm:h-7 md:h-8 relative">
-                <Image
-                  src="/images/wooden-rod.jpg"
-                  alt="Wooden Rod"
-                  fill
-                  className="object-contain drop-shadow-lg"
-                  priority
-                />
-              </div>
-            </motion.div>
 
             {/* Open button */}
             <motion.button
               onClick={handleOpen}
               disabled={isOpening}
-              className="mt-6 sm:mt-8 md:mt-10 group cursor-pointer disabled:cursor-not-allowed"
+              className="mt-12 sm:mt-14 md:mt-16 group cursor-pointer disabled:cursor-not-allowed"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}

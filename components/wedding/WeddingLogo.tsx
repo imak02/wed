@@ -37,26 +37,26 @@ export function WeddingLogo({
       style={{ width: dimensions.width, height: dimensions.height }}
       {...wrapperProps}
     >
-      {/* Decorative golden ring */}
+      {/* Decorative golden ring - bolder */}
       <div 
         className="absolute inset-0 rounded-full"
         style={{
           background: 'linear-gradient(135deg, #FFD700 0%, #C9A227 50%, #8B6914 100%)',
-          padding: '3px',
+          padding: '4px',
         }}
       >
         <div className="w-full h-full rounded-full bg-white overflow-hidden flex items-center justify-center" />
       </div>
       
       {/* Hand-holding couple logo - elegant minimalist design */}
-      <div className="absolute inset-1 rounded-full overflow-hidden flex items-center justify-center bg-white p-1">
-        <div className="w-full h-full rounded-full flex items-center justify-center bg-white">
+      <div className="absolute inset-1.5 rounded-full overflow-hidden flex items-center justify-center bg-white">
+        <div className="w-full h-full rounded-full flex items-center justify-center bg-white border-2" style={{ borderColor: 'rgba(255, 215, 0, 0.3)' }}>
           <Image
             src="/logo.png"
             alt="Smriti & Asbin"
-            width={dimensions.width - 12}
-            height={dimensions.height - 12}
-            className="object-contain"
+            width={dimensions.width - 16}
+            height={dimensions.height - 16}
+            className="object-contain font-bold"
             priority
           />
         </div>
