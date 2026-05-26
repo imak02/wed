@@ -42,22 +42,24 @@ export function WeddingLogo({
         className="absolute inset-0 rounded-full"
         style={{
           background: 'linear-gradient(135deg, #FFD700 0%, #C9A227 50%, #8B6914 100%)',
-          padding: '2px',
+          padding: '3px',
         }}
       >
-        <div className="w-full h-full rounded-full bg-black/5 overflow-hidden flex items-center justify-center" />
+        <div className="w-full h-full rounded-full bg-red-700 overflow-hidden flex items-center justify-center" />
       </div>
       
       {/* Hand-holding couple logo - elegant minimalist design */}
-      <div className="absolute inset-1 rounded-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-ivory to-white">
-        <Image
-          src="/logo.png"
-          alt="Smriti & Asbin"
-          width={dimensions.width - 8}
-          height={dimensions.height - 8}
-          className="object-contain"
-          priority
-        />
+      <div className="absolute inset-1 rounded-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-red-700 to-red-900 p-1">
+        <div className="w-full h-full rounded-full flex items-center justify-center bg-red-800">
+          <Image
+            src="/logo.png"
+            alt="Smriti & Asbin"
+            width={dimensions.width - 12}
+            height={dimensions.height - 12}
+            className="object-contain"
+            priority
+          />
+        </div>
       </div>
     </Wrapper>
   )
