@@ -36,6 +36,11 @@ export const metadata: Metadata = {
     title: 'Smriti & Asbin | Wedding Invitation',
     description: 'Two Souls, One Sacred Journey - Join us for our wedding celebration',
     type: 'website',
+    images: ['/logo.png'],
+  },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
 }
 
