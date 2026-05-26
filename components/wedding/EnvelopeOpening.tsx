@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface EnvelopeOpeningProps {
   onOpen: () => void
@@ -34,7 +35,7 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
     <AnimatePresence>
       {!isOpened && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 overflow-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 overflow-y-auto"
           style={{
             background: 'linear-gradient(145deg, #B91C1C 0%, #991B1B 30%, #7F1D1D 60%, #450A0A 100%)',
           }}
@@ -67,18 +68,31 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
 
           {/* Main container */}
           <motion.div
-            className="relative flex flex-col items-center justify-center w-full"
+            className="relative flex flex-col items-center justify-center w-full my-auto"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            {/* Top wooden rod */}
-            <div className="mb-2 sm:mb-3 md:mb-4">
-              <div className="w-20 sm:w-24 md:w-28 h-2 sm:h-2.5 md:h-3 rounded-full bg-gradient-to-r from-amber-900 via-yellow-700 to-amber-900 shadow-lg" />
-            </div>
+            {/* Top wooden rod - using image */}
+            <motion.div 
+              className="mb-1 sm:mb-2"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="w-20 sm:w-24 md:w-28 h-6 sm:h-7 md:h-8 relative">
+                <Image
+                  src="/images/wooden-rod.jpg"
+                  alt="Wooden Rod"
+                  fill
+                  className="object-contain drop-shadow-lg"
+                  priority
+                />
+              </div>
+            </motion.div>
 
             {/* Hanging rope from top rod */}
-            <div className="w-16 sm:w-20 md:w-24 h-4 sm:h-5 md:h-6 mb-1">
+            <div className="w-12 sm:w-16 md:w-20 h-3 sm:h-4 md:h-5">
               <svg viewBox="0 0 100 40" className="w-full h-full">
                 <line x1="25" y1="0" x2="50" y2="40" stroke="#8B6914" strokeWidth="2" />
                 <line x1="75" y1="0" x2="50" y2="40" stroke="#8B6914" strokeWidth="2" />
@@ -131,7 +145,7 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
                   </div>
 
                   <div className="flex items-center justify-center gap-2 mb-2 sm:mb-2.5">
-                    <span className="text-yellow-300 text-xs sm:text-sm font-serif">Sunday</span>
+                    <span className="text-yellow-300 text-xs sm:text-sm font-serif">Tuesday</span>
                     <span className="text-yellow-400 text-xs">•</span>
                     <span className="text-yellow-300 text-xs sm:text-sm font-serif">At 6:00 PM</span>
                   </div>
@@ -178,23 +192,36 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
             </div>
 
             {/* Hanging rope from bottom rod */}
-            <div className="w-16 sm:w-20 md:w-24 h-4 sm:h-5 md:h-6 mt-1">
+            <div className="w-12 sm:w-16 md:w-20 h-3 sm:h-4 md:h-5">
               <svg viewBox="0 0 100 40" className="w-full h-full">
                 <line x1="50" y1="0" x2="25" y2="40" stroke="#8B6914" strokeWidth="2" />
                 <line x1="50" y1="0" x2="75" y2="40" stroke="#8B6914" strokeWidth="2" />
               </svg>
             </div>
 
-            {/* Bottom wooden rod */}
-            <div className="mt-2 sm:mt-3 md:mt-4">
-              <div className="w-20 sm:w-24 md:w-28 h-2 sm:h-2.5 md:h-3 rounded-full bg-gradient-to-r from-amber-900 via-yellow-700 to-amber-900 shadow-lg" />
-            </div>
+            {/* Bottom wooden rod - using image */}
+            <motion.div 
+              className="mt-1 sm:mt-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="w-20 sm:w-24 md:w-28 h-6 sm:h-7 md:h-8 relative">
+                <Image
+                  src="/images/wooden-rod.jpg"
+                  alt="Wooden Rod"
+                  fill
+                  className="object-contain drop-shadow-lg"
+                  priority
+                />
+              </div>
+            </motion.div>
 
             {/* Open button */}
             <motion.button
               onClick={handleOpen}
               disabled={isOpening}
-              className="mt-8 sm:mt-10 md:mt-12 group cursor-pointer disabled:cursor-not-allowed"
+              className="mt-6 sm:mt-8 md:mt-10 group cursor-pointer disabled:cursor-not-allowed"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}

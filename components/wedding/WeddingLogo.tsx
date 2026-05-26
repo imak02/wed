@@ -45,12 +45,12 @@ export function WeddingLogo({
           padding: '3px',
         }}
       >
-        <div className="w-full h-full rounded-full bg-golden overflow-hidden flex items-center justify-center" />
+        <div className="w-full h-full rounded-full bg-white overflow-hidden flex items-center justify-center" />
       </div>
       
       {/* Hand-holding couple logo - elegant minimalist design */}
-      <div className="absolute inset-1 rounded-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-yellow-500 to-yellow-600 p-1">
-        <div className="w-full h-full rounded-full flex items-center justify-center bg-yellow-500">
+      <div className="absolute inset-1 rounded-full overflow-hidden flex items-center justify-center bg-white p-1">
+        <div className="w-full h-full rounded-full flex items-center justify-center bg-white">
           <Image
             src="/logo.png"
             alt="Smriti & Asbin"
