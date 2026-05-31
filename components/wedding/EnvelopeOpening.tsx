@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { WeddingLogo } from './WeddingLogo'
+import { InvitationCard } from './InvitationCard'
 
 interface EnvelopeOpeningProps {
   onOpen: () => void
@@ -22,11 +23,13 @@ function OrnamentSVG({ className }: { className?: string }) {
 export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
   const [isOpening, setIsOpening] = useState(false)
   const [isOpened, setIsOpened] = useState(false)
+  const [showCard, setShowCard] = useState(false)
 
   const handleOpen = () => {
     setIsOpening(true)
     setTimeout(() => {
       setIsOpened(true)
+      setShowCard(true)
       setTimeout(onOpen, 800)
     }, 2200)
   }
@@ -42,7 +45,15 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
           exit={{ opacity: 0, scale: 1.1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {/* Floating particles */}
+          {/* Invitation Card Modal */}
+          <InvitationCard 
+            isVisible={showCard} 
+            onClose={() => {
+              setShowCard(false)
+              setIsOpened(false)
+            }} 
+          />
+
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {[...Array(10)].map((_, i) => (
               <motion.div
