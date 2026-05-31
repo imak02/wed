@@ -35,24 +35,17 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
   }
 
   return (
-    <AnimatePresence>
-      {!isOpened && (
-        <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 overflow-y-auto"
-          style={{
-            background: 'linear-gradient(145deg, #B91C1C 0%, #991B1B 30%, #7F1D1D 60%, #450A0A 100%)',
-          }}
-          exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          {/* Invitation Card Modal */}
-          <InvitationCard 
-            isVisible={showCard} 
-            onClose={() => {
-              setShowCard(false)
-              setIsOpened(false)
-            }} 
-          />
+    <>
+      <AnimatePresence>
+        {!isOpened && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 overflow-y-auto"
+            style={{
+              background: 'linear-gradient(145deg, #B91C1C 0%, #991B1B 30%, #7F1D1D 60%, #450A0A 100%)',
+            }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
 
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {[...Array(10)].map((_, i) => (
@@ -211,5 +204,17 @@ export function EnvelopeOpening({ onOpen }: EnvelopeOpeningProps) {
         </motion.div>
       )}
     </AnimatePresence>
+
+    {/* Render Invitation Card Modal separately */}
+    {showCard && (
+      <InvitationCard 
+        isVisible={showCard} 
+        onClose={() => {
+          setShowCard(false)
+          setIsOpened(false)
+        }} 
+      />
+    )}
+    </>
   )
 }
