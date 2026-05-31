@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 
 import { LoadingScreen } from '@/components/wedding/LoadingScreen'
-import { EnvelopeOpening } from '@/components/wedding/EnvelopeOpening'
+import { EnvelopeModal } from '@/components/wedding/EnvelopeModal'
 import { SmoothScroll } from '@/components/wedding/SmoothScroll'
 import { ScrollProgress } from '@/components/wedding/ScrollProgress'
 import { Navigation } from '@/components/wedding/Navigation'
@@ -50,9 +50,9 @@ export default function WeddingInvitation() {
 
       <AnimatePresence>
         {appState === 'envelope' && (
-          <EnvelopeOpening
+          <EnvelopeModal
             key="envelope"
-            onOpen={() => setAppState('content')}
+            onShowDetails={() => setAppState('content')}
           />
         )}
       </AnimatePresence>
