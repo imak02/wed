@@ -71,32 +71,17 @@ export function EnvelopeModal({ onShowDetails }: EnvelopeModalProps) {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-950/40 to-red-950/60" />
           </div>
 
-          {/* Content overlay */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 p-8 sm:p-12 md:p-16 min-h-[500px] md:min-h-[600px] items-center">
-            {/* Left side - Ganesha */}
-            <motion.div
-              className="flex justify-center items-start md:items-center"
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              <div className="relative w-40 sm:w-56 md:w-64 h-40 sm:h-56 md:h-64">
-                <Image
-                  src="/images/ganesha-blessing.png"
-                  alt="Lord Ganesha"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                  priority
-                />
-              </div>
-            </motion.div>
+          {/* Translucent overlay layer */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70 z-5" />
 
-            {/* Right side - Invitation text */}
+          {/* Content overlay */}
+          <div className="relative z-10 flex flex-col items-center justify-center p-6 sm:p-8 md:p-12 min-h-screen md:min-h-[600px]">
+            {/* Invitation text - centered and responsive */}
             <motion.div
-              className="flex flex-col items-center md:items-start text-center md:text-left space-y-6 sm:space-y-8"
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              className="w-full max-w-2xl flex flex-col items-center text-center space-y-4 sm:space-y-6 md:space-y-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
             >
               {/* Header text */}
               <div className="space-y-3">
@@ -143,7 +128,7 @@ export function EnvelopeModal({ onShowDetails }: EnvelopeModalProps) {
               {/* Show Details button */}
               <motion.button
                 onClick={onShowDetails}
-                className="group mt-4 px-8 sm:px-10 py-3 sm:py-4 rounded-full font-[var(--font-heading)] font-bold text-sm sm:text-base tracking-wider uppercase overflow-hidden relative"
+                className="mt-6 sm:mt-8 md:mt-10 px-8 sm:px-10 md:px-12 py-3 sm:py-4 rounded-full font-[var(--font-heading)] font-bold text-xs sm:text-sm md:text-base tracking-wider uppercase overflow-hidden relative"
                 style={{
                   background: 'linear-gradient(135deg, #FFD700 0%, #FCD34D 50%, #FFD700 100%)',
                   boxShadow: '0 8px 25px -8px rgba(255, 215, 0, 0.7)',
@@ -152,27 +137,13 @@ export function EnvelopeModal({ onShowDetails }: EnvelopeModalProps) {
                 whileTap={{ scale: 0.95 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                <span className="relative text-red-900 flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span className="relative text-red-900">
                   Show Details
                 </span>
               </motion.button>
             </motion.div>
           </div>
         </div>
-      </motion.div>
-
-      {/* Decorative elements */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-yellow-400/40"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      >
-        <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
       </motion.div>
     </motion.div>
   )
